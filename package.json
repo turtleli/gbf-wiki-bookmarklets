@@ -1,0 +1,22 @@
+{
+  "name": "gbf-wiki-bookmarklets",
+  "version": "2020.04.15.1",
+  "description": "Collection of bookmarklets to quickly populate new pages",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabulousCupcake/gbf-wiki-bookmarklets.git"
+  },
+  "author": "FabulousCupcake",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FabulousCupcake/gbf-wiki-bookmarklets/issues"
+  },
+  "homepage": "https://github.com/FabulousCupcake/gbf-wiki-bookmarklets#readme",
+  "dependencies": {
+    "bookmarklet": "^1.0.4"
+  }
+}
