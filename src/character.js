@@ -235,13 +235,13 @@ const result = `
 |abilitycount= ${ABILITY_COUNT}
 |a1_icon= Ability ${ABILITY_ONE_NAME}.png
 |a1_name= ${ABILITY_ONE_NAME}
-|a1_cd= {{InfoCd|num=1|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=${ABILITY_ONE_COOLDOWN+1}|level1=55}}
+|a1_cd= {{InfoCd|num=1|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=?|level1=55}}
 |a1_dur= {{InfoDur|type=t|duration=?}}
 |a1_oblevel= {{InfoOb|obtained=1|enhanced=55}}
 |a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE_DESC}}}
 |a2_icon= Ability ${ABILITY_TWO_NAME}.png
 |a2_name= ${ABILITY_TWO_NAME}
-|a2_cd= {{InfoCd|num=1|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=${ABILITY_TWO_COOLDOWN+1}|level1=75}}
+|a2_cd= {{InfoCd|num=1|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=?|level1=75}}
 |a2_dur= {{InfoDur|type=t|duration=?}}
 |a2_oblevel= {{InfoOb|obtained=1|enhanced=75}}
 |a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO_DESC}}}
