@@ -1,4 +1,4 @@
-const bookmarklet = require("bookmarklet");
+const bookmarklet = require("@fbcpck/bookmarklet");
 const fs = require("fs");
 
 const lib = require("./src/lib");
