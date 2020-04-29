@@ -1,3 +1,11 @@
+(function(){
+
+// Check page correctness
+if (!location.hash.match("#gacha/chara")) {
+  const answer = confirm("You don't seem to be in #gacha/chara page. Run anyway?");
+  if (answer === false) return;
+}
+
 const ID = document.querySelector('.btn-char-zoom[data-image-id]').getAttribute("data-image-id").replace("_01", "");
 const NAME = document.querySelector(".prt-chara-info > div:first-child").textContent;
 
@@ -289,3 +297,5 @@ const result = `
 `;
 
 copyToClipboard(result);
+
+})();

@@ -1,3 +1,11 @@
+(function(){
+
+// Check page correctness
+if (!location.hash.match("#gacha/weapon")) {
+  const answer = confirm("You don't seem to be in #gacha/weapon page. Run anyway?");
+  if (answer === false) return;
+}
+
 const ID = document.querySelector('.prt-weapon-image > .img-weapon').getAttribute("src").match(/\/g\/(.+?)\./)[1];
 
 const NAME = document.querySelector(".prt-weapon-info > div:first-child").textContent;
@@ -123,3 +131,5 @@ const result = nonEmpty`{{Weapon
 `;
 
 copyToClipboard(result);
+
+})();

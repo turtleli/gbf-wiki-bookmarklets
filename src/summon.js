@@ -1,3 +1,11 @@
+(function(){
+
+// Check page correctness
+if (!location.hash.match("#gacha/summon")) {
+  const answer = confirm("You don't seem to be in #gacha/summon page. Run anyway?");
+  if (answer === false) return;
+}
+
 const ID = document.querySelector('.prt-summon-image > .img-summon').getAttribute("src").match(/\/b\/(.+?)\./)[1];
 
 const NAME = document.querySelector(".prt-summon-info > div:first-child").textContent;
@@ -98,3 +106,5 @@ const result = nonEmpty`{{Summon
 `;
 
 copyToClipboard(result);
+
+})();
