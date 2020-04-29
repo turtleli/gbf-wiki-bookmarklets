@@ -19,6 +19,8 @@ const ELEMENT = (() => {
   return "?";
 })();
 
+const VOICE_ACTOR = document.querySelector(".txt-acter-name")?.innerText.split("\n").join(", ");
+
 const MIN_HP = document.querySelector(".prt-min-hp .txt-hp-value").textContent;
 const MAX_HP = document.querySelector(".prt-max-hp .txt-hp-value").textContent;
 const MIN_ATK = document.querySelector(".prt-min-atk .txt-atk-value").textContent;
@@ -44,7 +46,7 @@ const result = nonEmpty`{{Summon
 |link_jpwiki=
 |link_gamewith=
 |link_kamigame=
-|va=
+|va= ${VOICE_ACTOR}
 |vajp=
 |base_evo= 3
 |max_evo= 3
