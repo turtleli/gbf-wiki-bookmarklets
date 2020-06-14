@@ -11,19 +11,19 @@ const ID = document.querySelector('.prt-summon-image > .img-summon').getAttribut
 const NAME = document.querySelector(".prt-summon-info > div:first-child").textContent;
 
 const RARITY = (() => {
-  if (document.querySelector(".prt-rarity-4")) return "ssr";
-  if (document.querySelector(".prt-rarity-3")) return "sr";
-  if (document.querySelector(".prt-rarity-2")) return "r";
+  if (document.querySelector(".prt-rarity-4")) return "SSR";
+  if (document.querySelector(".prt-rarity-3")) return "SR";
+  if (document.querySelector(".prt-rarity-2")) return "R";
   return "?";
 })();
 
 const ELEMENT = (() => {
-  if (document.querySelector(".ico-type1")) return "fire";
-  if (document.querySelector(".ico-type2")) return "water";
-  if (document.querySelector(".ico-type3")) return "earth";
-  if (document.querySelector(".ico-type4")) return "wind";
-  if (document.querySelector(".ico-type5")) return "light";
-  if (document.querySelector(".ico-type6")) return "dark";
+  if (document.querySelector(".ico-type1")) return "Fire";
+  if (document.querySelector(".ico-type2")) return "Water";
+  if (document.querySelector(".ico-type3")) return "Earth";
+  if (document.querySelector(".ico-type4")) return "Wind";
+  if (document.querySelector(".ico-type5")) return "Light";
+  if (document.querySelector(".ico-type6")) return "Dark";
   return "?";
 })();
 
@@ -65,19 +65,24 @@ const result = nonEmpty`{{Summon
 |atk1= ${MIN_ATK}
 |atk2= ${MAX_ATK}
 |atk3=
-|release_date= ?
+|release_date= 
 |4star_date=
-|obtain= ?
-|join= ?
+|4star_unlock=
+|obtain= 
+|join= 
 |aura_name= ${AURA_NAME}
 |aura1= ${MAIN_AURA_DESC}
-|subaura1= ${SUB_AURA_DESC}
 |aura2=
-|subaura2=
 |aura3=
+|subaura1= ${SUB_AURA_DESC}
+|subaura2=
 |call_name= ${CALL_NAME}
 |call_cd_first=
+|call_cd_first_mlb=
+|call_cd_first_flb=
 |call_cd=
+|call_cd_mlb=
+|call_cd_flb=
 |call_reuse=
 |comboable=
 |combo1=
