@@ -10,38 +10,38 @@ const ID = document.querySelector('.btn-char-zoom[data-image-id]').getAttribute(
 const NAME = document.querySelector(".prt-chara-info > div:first-child").textContent;
 
 const RARITY = (() => {
-  if (document.querySelector(".prt-rarity-4")) return "ssr";
-  if (document.querySelector(".prt-rarity-3")) return "sr";
-  if (document.querySelector(".prt-rarity-2")) return "r";
+  if (document.querySelector(".prt-rarity-4")) return "SSR";
+  if (document.querySelector(".prt-rarity-3")) return "SR";
+  if (document.querySelector(".prt-rarity-2")) return "R";
   return "?";
 })();
 
 const ELEMENT = (() => {
-  if (document.querySelector(".ico-type1")) return "fire";
-  if (document.querySelector(".ico-type2")) return "water";
-  if (document.querySelector(".ico-type3")) return "earth";
-  if (document.querySelector(".ico-type4")) return "wind";
-  if (document.querySelector(".ico-type5")) return "light";
-  if (document.querySelector(".ico-type6")) return "dark";
+  if (document.querySelector(".ico-type1")) return "Fire";
+  if (document.querySelector(".ico-type2")) return "Water";
+  if (document.querySelector(".ico-type3")) return "Earth";
+  if (document.querySelector(".ico-type4")) return "Wind";
+  if (document.querySelector(".ico-type5")) return "Light";
+  if (document.querySelector(".ico-type6")) return "Dark";
   return "?";
 })();
 
 const TYPE = (() => {
-  if (document.querySelector(".ico-chara-type-short1")) return "balanced";
-  if (document.querySelector(".ico-chara-type-short2")) return "attack";
-  if (document.querySelector(".ico-chara-type-short3")) return "defense";
-  if (document.querySelector(".ico-chara-type-short4")) return "heal";
-  if (document.querySelector(".ico-chara-type-short5")) return "special";
+  if (document.querySelector(".ico-chara-type-short1")) return "Balanced";
+  if (document.querySelector(".ico-chara-type-short2")) return "Attack";
+  if (document.querySelector(".ico-chara-type-short3")) return "Defense";
+  if (document.querySelector(".ico-chara-type-short4")) return "Heal";
+  if (document.querySelector(".ico-chara-type-short5")) return "Special";
   return "?";
 })();
 
 const RACE = (() => {
-  if (document.querySelector(".ico-mini-race1")) return "human";
-  if (document.querySelector(".ico-mini-race2")) return "erune";
-  if (document.querySelector(".ico-mini-race3")) return "draph";
-  if (document.querySelector(".ico-mini-race4")) return "harvin";
-  if (document.querySelector(".ico-mini-race5")) return "other";
-  if (document.querySelector(".ico-mini-race6")) return "primal";
+  if (document.querySelector(".ico-mini-race1")) return "Human";
+  if (document.querySelector(".ico-mini-race2")) return "Erune";
+  if (document.querySelector(".ico-mini-race3")) return "Draph";
+  if (document.querySelector(".ico-mini-race4")) return "Harvin";
+  if (document.querySelector(".ico-mini-race5")) return "Other";
+  if (document.querySelector(".ico-mini-race6")) return "Primal";
   return "?";
 })();
 
@@ -51,16 +51,16 @@ const JOIN_WEAPON = document.querySelector(".txt-weapon-name").textContent;
 
 const PROFICIENCY = (() => {
   const list = [];
-  if (document.querySelector(".ico-weapon-1")) list.push("sabre");
-  if (document.querySelector(".ico-weapon-2")) list.push("dagger");
-  if (document.querySelector(".ico-weapon-3")) list.push("spear");
-  if (document.querySelector(".ico-weapon-4")) list.push("axe");
-  if (document.querySelector(".ico-weapon-5")) list.push("staff");
-  if (document.querySelector(".ico-weapon-6")) list.push("gun");
-  if (document.querySelector(".ico-weapon-7")) list.push("melee");
-  if (document.querySelector(".ico-weapon-8")) list.push("bow");
-  if (document.querySelector(".ico-weapon-9")) list.push("harp");
-  if (document.querySelector(".ico-weapon-0")) list.push("katana");
+  if (document.querySelector(".ico-weapon-1")) list.push("Sabre");
+  if (document.querySelector(".ico-weapon-2")) list.push("Dagger");
+  if (document.querySelector(".ico-weapon-3")) list.push("Spear");
+  if (document.querySelector(".ico-weapon-4")) list.push("Axe");
+  if (document.querySelector(".ico-weapon-5")) list.push("Staff");
+  if (document.querySelector(".ico-weapon-6")) list.push("Gun");
+  if (document.querySelector(".ico-weapon-7")) list.push("Melee");
+  if (document.querySelector(".ico-weapon-8")) list.push("Bow");
+  if (document.querySelector(".ico-weapon-9")) list.push("Harp");
+  if (document.querySelector(".ico-weapon-0")) list.push("Katana");
   return list.join(",");
 })();
 
@@ -193,18 +193,18 @@ const result = `
 |jptitle=
 |jpva=
 |name= ${NAME}
-|release_date= ?
+|release_date= 
 |link_gamewith=
 |link_jpwiki=
 |link_kamigame=
-|gender= ?
-|obtain= ?
+|gender= 
+|obtain= 
 |title=
 |title_source=
-|5star= ?
+|5star= 
 |5star_date=
-|base_evo= ?
-|max_evo= ?
+|base_evo= 4
+|max_evo= 4
 |uncap_type= ${RARITY}
 |blush_value=
 |art1= {{PAGENAME}} A.png
@@ -241,28 +241,28 @@ const result = `
 |ougi4_desc= ${OUGI_FOUR_DESC}
 |abilitysubtitle=
 |abilitycount= ${ABILITY_COUNT}
-|a1_icon= Ability ${ABILITY_ONE_NAME}.png
+|a1_icon= Ability m .png
 |a1_name= ${ABILITY_ONE_NAME}
-|a1_cd= {{InfoCd|num=1|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=?|level1=55}}
-|a1_dur= {{InfoDur|type=t|duration=?}}
+|a1_cd= {{InfoCd|num=0|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=|level1=55}}
+|a1_dur= {{InfoDur|type=t|duration=}}
 |a1_oblevel= {{InfoOb|obtained=1|enhanced=55}}
 |a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE_DESC}}}
-|a2_icon= Ability ${ABILITY_TWO_NAME}.png
+|a2_icon= Ability m .png
 |a2_name= ${ABILITY_TWO_NAME}
-|a2_cd= {{InfoCd|num=1|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=?|level1=75}}
-|a2_dur= {{InfoDur|type=t|duration=?}}
+|a2_cd= {{InfoCd|num=0|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=|level1=75}}
+|a2_dur= {{InfoDur|type=t|duration=}}
 |a2_oblevel= {{InfoOb|obtained=1|enhanced=75}}
 |a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO_DESC}}}
-|a3_icon= Ability ${ABILITY_THREE_NAME}.png
+|a3_icon= Ability m .png
 |a3_name= ${ABILITY_THREE_NAME}
-|a3_cd= {{InfoCd|num=0|cooldown=?}}
-|a3_dur= {{InfoDur|type=t|duration=?}}
+|a3_cd= {{InfoCd|num=0|cooldown=}}
+|a3_dur= {{InfoDur|type=t|duration=}}
 |a3_oblevel= {{InfoOb|obtained=${ABILITY_THREE_OBTAIN}}}
 |a3_effdesc= {{InfoDes|num=0|des=${ABILITY_THREE_DESC}}}
-|a4_icon= Ability ${ABILITY_FOUR_NAME}.png
+|a4_icon= Ability m .png
 |a4_name= ${ABILITY_FOUR_NAME}
-|a4_cd= {{InfoCd|num=0|cooldown=?}}
-|a4_dur= {{InfoDur|type=t|duration=?}}
+|a4_cd= {{InfoCd|num=0|cooldown=}}
+|a4_dur= {{InfoDur|type=t|duration=}}
 |a4_oblevel= {{InfoOb|obtained=${ABILITY_FOUR_OBTAIN}}}
 |a4_effdesc= {{InfoDes|num=0|des=${ABILITY_FOUR_DESC}}}
 |s_abilitycount= ${SUPPORT_ABILITY_COUNT}
