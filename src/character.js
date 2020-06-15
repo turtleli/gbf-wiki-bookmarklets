@@ -106,6 +106,11 @@ const ABILITY_ONE_NAME = (() => {
   if (ABILITY_COUNT < 1) return "";
   return document.querySelector(".prt-detail-action > .prt-box:nth-child(2) > .name").textContent;
 })();
+const ABILITY_ONE_ID = (() => {
+  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(2) > div[class^='ico-ability']")?.classList.toString();
+  const id = classList?.match(/ability([\d_]+)/)?.[1];
+  return (id) ? `Ability_m_${id}.png` : "";
+})();
 const ABILITY_ONE_DESC = (() => {
   if (ABILITY_COUNT < 1) return "";
   return document.querySelector(".prt-detail-action > .prt-box:nth-child(2) > .comment").textContent;
@@ -121,6 +126,11 @@ const ABILITY_ONE_COOLDOWN = (() => {
 const ABILITY_TWO_NAME = (() => {
   if (ABILITY_COUNT < 2) return "";
   return document.querySelector(".prt-detail-action > .prt-box:nth-child(3) > .name").textContent;
+})();
+const ABILITY_TWO_ID = (() => {
+  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(3) > div[class^='ico-ability']")?.classList.toString();
+  const id = classList?.match(/ability([\d_]+)/)?.[1];
+  return (id) ? `Ability_m_${id}.png` : "";
 })();
 const ABILITY_TWO_DESC = (() => {
   if (ABILITY_COUNT < 2) return "";
@@ -138,6 +148,11 @@ const ABILITY_THREE_NAME = (() => {
   if (ABILITY_COUNT < 3) return "";
   return document.querySelector(".prt-detail-action > .prt-box:nth-child(4) > .name").textContent;
 })();
+const ABILITY_THREE_ID = (() => {
+  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(4) > div[class^='ico-ability']")?.classList.toString();
+  const id = classList?.match(/ability([\d_]+)/)?.[1];
+  return (id) ? `Ability_m_${id}.png` : "";
+})();
 const ABILITY_THREE_DESC = (() => {
   if (ABILITY_COUNT < 3) return "";
   return document.querySelector(".prt-detail-action > .prt-box:nth-child(4) > .comment").textContent;
@@ -153,6 +168,11 @@ const ABILITY_THREE_OBTAIN = (() => {
 const ABILITY_FOUR_NAME = (() => {
   if (ABILITY_COUNT < 4) return "";
   return document.querySelector(".prt-detail-action > .prt-box:nth-child(5) > .name").textContent;
+})();
+const ABILITY_FOUR_ID = (() => {
+  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(5) > div[class^='ico-ability']")?.classList.toString();
+  const id = classList?.match(/ability([\d_]+)/)?.[1];
+  return (id) ? `Ability_m_${id}.png` : "";
 })();
 const ABILITY_FOUR_DESC = (() => {
   if (ABILITY_COUNT < 4) return "";
@@ -184,7 +204,7 @@ const SUPPORT_ABILITY_TWO_DESC = (() => {
   return document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .comment").textContent;
 })();
 
-const result = `
+const result = nonEmpty`
 {{CharacterTabs|base={{BASENAME}}}}
 {{Character
 |id= ${ID}
@@ -193,15 +213,15 @@ const result = `
 |jptitle=
 |jpva=
 |name= ${NAME}
-|release_date= 
+|release_date=
 |link_gamewith=
 |link_jpwiki=
 |link_kamigame=
-|gender= 
-|obtain= 
+|gender=
+|obtain=
 |title=
 |title_source=
-|5star= 
+|5star=
 |5star_date=
 |base_evo= 4
 |max_evo= 4
@@ -241,25 +261,25 @@ const result = `
 |ougi4_desc= ${OUGI_FOUR_DESC}
 |abilitysubtitle=
 |abilitycount= ${ABILITY_COUNT}
-|a1_icon= Ability m .png
+|a1_icon= ${ABILITY_ONE_ID}
 |a1_name= ${ABILITY_ONE_NAME}
 |a1_cd= {{InfoCd|num=0|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=|level1=55}}
 |a1_dur= {{InfoDur|type=t|duration=}}
 |a1_oblevel= {{InfoOb|obtained=1|enhanced=55}}
 |a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE_DESC}}}
-|a2_icon= Ability m .png
+|a2_icon= ${ABILITY_TWO_ID}
 |a2_name= ${ABILITY_TWO_NAME}
 |a2_cd= {{InfoCd|num=0|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=|level1=75}}
 |a2_dur= {{InfoDur|type=t|duration=}}
 |a2_oblevel= {{InfoOb|obtained=1|enhanced=75}}
 |a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO_DESC}}}
-|a3_icon= Ability m .png
+|a3_icon= ${ABILITY_THREE_ID}
 |a3_name= ${ABILITY_THREE_NAME}
 |a3_cd= {{InfoCd|num=0|cooldown=}}
 |a3_dur= {{InfoDur|type=t|duration=}}
 |a3_oblevel= {{InfoOb|obtained=${ABILITY_THREE_OBTAIN}}}
 |a3_effdesc= {{InfoDes|num=0|des=${ABILITY_THREE_DESC}}}
-|a4_icon= Ability m .png
+|a4_icon= ${ABILITY_FOUR_ID}
 |a4_name= ${ABILITY_FOUR_NAME}
 |a4_cd= {{InfoCd|num=0|cooldown=}}
 |a4_dur= {{InfoDur|type=t|duration=}}
