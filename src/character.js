@@ -262,24 +262,28 @@ const result = nonEmpty`
 |abilitysubtitle=
 |abilitycount= ${ABILITY_COUNT}
 |a1_icon= ${ABILITY_ONE_ID}
+|a1_color=
 |a1_name= ${ABILITY_ONE_NAME}
 |a1_cd= {{InfoCd|num=0|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=|level1=55}}
 |a1_dur= {{InfoDur|type=t|duration=}}
 |a1_oblevel= {{InfoOb|obtained=1|enhanced=55}}
 |a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE_DESC}}}
 |a2_icon= ${ABILITY_TWO_ID}
+|a2_color=
 |a2_name= ${ABILITY_TWO_NAME}
 |a2_cd= {{InfoCd|num=0|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=|level1=75}}
 |a2_dur= {{InfoDur|type=t|duration=}}
 |a2_oblevel= {{InfoOb|obtained=1|enhanced=75}}
 |a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO_DESC}}}
 |a3_icon= ${ABILITY_THREE_ID}
+|a3_color=
 |a3_name= ${ABILITY_THREE_NAME}
 |a3_cd= {{InfoCd|num=0|cooldown=}}
 |a3_dur= {{InfoDur|type=t|duration=}}
 |a3_oblevel= {{InfoOb|obtained=${ABILITY_THREE_OBTAIN}}}
 |a3_effdesc= {{InfoDes|num=0|des=${ABILITY_THREE_DESC}}}
 |a4_icon= ${ABILITY_FOUR_ID}
+|a4_color=
 |a4_name= ${ABILITY_FOUR_NAME}
 |a4_cd= {{InfoCd|num=0|cooldown=}}
 |a4_dur= {{InfoDur|type=t|duration=}}
