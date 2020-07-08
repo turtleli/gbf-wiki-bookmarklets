@@ -11,19 +11,19 @@ const ID = document.querySelector('.prt-summon-image > .img-summon').getAttribut
 const NAME = document.querySelector(".prt-summon-info > div:first-child").textContent;
 
 const RARITY = (() => {
-  if (document.querySelector(".prt-rarity-4")) return "SSR";
-  if (document.querySelector(".prt-rarity-3")) return "SR";
-  if (document.querySelector(".prt-rarity-2")) return "R";
+  if (document.querySelector(".prt-rarity-4")) return "ssr";
+  if (document.querySelector(".prt-rarity-3")) return "sr";
+  if (document.querySelector(".prt-rarity-2")) return "r";
   return "?";
 })();
 
 const ELEMENT = (() => {
-  if (document.querySelector(".ico-type1")) return "Fire";
-  if (document.querySelector(".ico-type2")) return "Water";
-  if (document.querySelector(".ico-type3")) return "Earth";
-  if (document.querySelector(".ico-type4")) return "Wind";
-  if (document.querySelector(".ico-type5")) return "Light";
-  if (document.querySelector(".ico-type6")) return "Dark";
+  if (document.querySelector(".ico-type1")) return "fire";
+  if (document.querySelector(".ico-type2")) return "water";
+  if (document.querySelector(".ico-type3")) return "earth";
+  if (document.querySelector(".ico-type4")) return "wind";
+  if (document.querySelector(".ico-type5")) return "light";
+  if (document.querySelector(".ico-type6")) return "dark";
   return "?";
 })();
 
