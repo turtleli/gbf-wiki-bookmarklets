@@ -54,13 +54,13 @@ const SKILL_ONE_ICON = document.querySelector(".prt-detail-support > .prt-box:nt
 const SKILL_ONE_DESC = document.querySelector(".prt-detail-support > .prt-box:nth-child(2) > .comment-m")?.textContent;
 
 const SKILL_TWO_NAME = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .name-m")?.textContent;
-const SKILL_TWO_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > :first-child")?.className.replace("ico-", "ws_");
+const SKILL_TWO_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > :first-child")?.className.replace("ico-", "ws_")+".png";
 const SKILL_TWO_DESC = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .comment-m")?.textContent;
 const SKILL_TWO_LEVELREQ = document.querySelector(".prt-detail-support > .not-get:nth-child(3) .txt-condition-level")?.textContent.match(/\d+$/)?.[0];
 
 const SKILL_THREE_NAME = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > .name-m")?.textContent;
 const SKILL_THREE_DESC = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > .comment-m")?.textContent;
-const SKILL_THREE_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > :first-child")?.className.replace("ico-", "ws_");
+const SKILL_THREE_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > :first-child")?.className.replace("ico-", "ws_")+".png";
 const SKILL_THREE_LEVELREQ = document.querySelector(".prt-detail-support > .not-get:nth-child(4) .txt-condition-level")?.textContent.match(/\d+$/)?.[0];
 
 const FLAVOR = document.querySelector(".prt-flavor").textContent.trim();
