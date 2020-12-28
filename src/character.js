@@ -76,7 +76,7 @@ const PROFICIENCY = (() => {
   if (document.querySelector(".ico-weapon-7")) list.push("Melee");
   if (document.querySelector(".ico-weapon-8")) list.push("Bow");
   if (document.querySelector(".ico-weapon-9")) list.push("Harp");
-  if (document.querySelector(".ico-weapon-0")) list.push("Katana");
+  if (document.querySelector(".ico-weapon-10")) list.push("Katana");
   return list.join(",");
 })();
 
