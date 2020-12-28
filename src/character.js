@@ -46,19 +46,20 @@ const RACE = (() => {
 })();
 
 const SERIES = (() => {
-  if (document.querySelector(".ico-series-type1")) return "summer";
-  if (document.querySelector(".ico-series-type2")) return "yukata";
-  if (document.querySelector(".ico-series-type3")) return "valentine";
-  if (document.querySelector(".ico-series-type4")) return "halloween";
-  if (document.querySelector(".ico-series-type5")) return "holiday";
-  if (document.querySelector(".ico-series-type6")) return "12generals";
-  if (document.querySelector(".ico-series-type7")) return "grand";
-  if (document.querySelector(".ico-series-type8")) return "fantasy";
-  if (document.querySelector(".ico-series-type9")) return "tie-in";
-  if (document.querySelector(".ico-series-type10")) return "eternals";
-  if (document.querySelector(".ico-series-type11")) return "evokers";
-  return "?";
-})
+  const list = [];
+  if (document.querySelector(".ico-series-type1")) list.push("summer");
+  if (document.querySelector(".ico-series-type2")) list.push("yukata");
+  if (document.querySelector(".ico-series-type3")) list.push("valentine");
+  if (document.querySelector(".ico-series-type4")) list.push("halloween");
+  if (document.querySelector(".ico-series-type5")) list.push("holiday");
+  if (document.querySelector(".ico-series-type6")) list.push("12generals");
+  if (document.querySelector(".ico-series-type7")) list.push("grand");
+  if (document.querySelector(".ico-series-type8")) list.push("fantasy");
+  if (document.querySelector(".ico-series-type9")) list.push("tie-in");
+  if (document.querySelector(".ico-series-type10")) list.push("eternals");
+  if (document.querySelector(".ico-series-type11")) list.push("evokers");
+  return list.join(";");
+})();
 
 const VOICE_ACTOR = document.querySelector(".txt-acter-name").innerText.split("\n").join(", ");
 
