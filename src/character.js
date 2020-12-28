@@ -36,12 +36,12 @@ const TYPE = (() => {
 })();
 
 const RACE = (() => {
-  if (document.querySelector(".ico-mini-race1")) return "Human";
-  if (document.querySelector(".ico-mini-race2")) return "Erune";
-  if (document.querySelector(".ico-mini-race3")) return "Draph";
-  if (document.querySelector(".ico-mini-race4")) return "Harvin";
-  if (document.querySelector(".ico-mini-race5")) return "Other";
-  if (document.querySelector(".ico-mini-race6")) return "Primal";
+  if (document.querySelector(".ico-mini-race-txt1")) return "Human";
+  if (document.querySelector(".ico-mini-race-txt2")) return "Erune";
+  if (document.querySelector(".ico-mini-race-txt3")) return "Draph";
+  if (document.querySelector(".ico-mini-race-txt4")) return "Harvin";
+  if (document.querySelector(".ico-mini-race-txt5")) return "Other";
+  if (document.querySelector(".ico-mini-race-txt6")) return "Primal";
   return "?";
 })();
 
