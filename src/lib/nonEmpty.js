@@ -2,10 +2,22 @@
 // Treat falsey values in template literals as empty string
 // i.e. `undefined` becomes "" instead of the default "undefined"
 function nonEmpty(parts) {
-  var res = parts[0];
-  for (var i=1; i<parts.length; i++) {
-    if (arguments[i]) res += arguments[i];
+  let res = "";
+
+  for (let i=0; i<parts.length; i++) {
+    const expr = arguments[i+1];
+
+    // Append string part
     res += parts[i];
+
+    // Check if we want to skip expression part
+    if (Array.isArray(expr)) continue;
+    if (!expr) continue;
+    if (expr === "undefined.png") continue;
+
+    // Append expression part
+    res += expr;
   }
+
   return res;
 }
