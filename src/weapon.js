@@ -40,7 +40,7 @@ const TYPE = (() => {
   if (document.querySelector(".ico-weapon-7")) return "melee";
   if (document.querySelector(".ico-weapon-8")) return "bow";
   if (document.querySelector(".ico-weapon-9")) return "harp";
-  if (document.querySelector(".ico-weapon-0")) return "katana";
+  if (document.querySelector(".ico-weapon-10")) return "katana";
   return "?";
 })();
 
