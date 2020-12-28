@@ -14,6 +14,9 @@ const RARITY = (() => {
   if (document.querySelector(".prt-rarity-4")) return "ssr";
   if (document.querySelector(".prt-rarity-3")) return "sr";
   if (document.querySelector(".prt-rarity-2")) return "r";
+  if (document.querySelector(".prt-rarity-4-large")) return "ssr";
+  if (document.querySelector(".prt-rarity-3-large")) return "sr";
+  if (document.querySelector(".prt-rarity-2-large")) return "r";
   return "?";
 })();
 
