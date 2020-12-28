@@ -8,12 +8,15 @@ if (!location.hash.match("#gacha/weapon")) {
 
 const ID = document.querySelector('.prt-weapon-image > .img-weapon').getAttribute("src").match(/\/g\/(.+?)\./)[1];
 
-const NAME = document.querySelector(".prt-weapon-info > div:first-child").textContent;
+const NAME = document.querySelector(".txt-item-name").textContent;
 
 const RARITY = (() => {
   if (document.querySelector(".prt-rarity-4")) return "ssr";
   if (document.querySelector(".prt-rarity-3")) return "sr";
   if (document.querySelector(".prt-rarity-2")) return "r";
+  if (document.querySelector(".prt-rarity-4-large")) return "ssr";
+  if (document.querySelector(".prt-rarity-3-large")) return "sr";
+  if (document.querySelector(".prt-rarity-2-large")) return "r";
   return "?";
 })();
 
@@ -37,7 +40,7 @@ const TYPE = (() => {
   if (document.querySelector(".ico-weapon-7")) return "melee";
   if (document.querySelector(".ico-weapon-8")) return "bow";
   if (document.querySelector(".ico-weapon-9")) return "harp";
-  if (document.querySelector(".ico-weapon-0")) return "katana";
+  if (document.querySelector(".ico-weapon-10")) return "katana";
   return "?";
 })();
 
