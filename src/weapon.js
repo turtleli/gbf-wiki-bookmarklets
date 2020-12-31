@@ -8,7 +8,11 @@ if (!location.hash.match("#gacha/weapon")) {
 
 const ID = document.querySelector('.prt-weapon-image > .img-weapon').getAttribute("src").match(/\/g\/(.+?)\./)[1];
 
-const NAME = document.querySelector(".txt-item-name").textContent;
+const NAME = (() => {
+  const largeBanner = document.querySelector(".txt-item-name")?.textContent;
+  const smallBanner = document.querySelector(".prt-weapon-info > div:first-child")?.textContent;
+  return (largeBanner) ? largeBanner : smallBanner;
+})();
 
 const RARITY = (() => {
   if (document.querySelector(".prt-rarity-4")) return "ssr";
