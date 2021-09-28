@@ -1,6 +1,6 @@
 {
   "name": "gbf-wiki-bookmarklets",
-  "version": "2020.04.15.1",
+  "version": "2021.09.28.1",
   "description": "Collection of bookmarklets to quickly populate new pages",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/FabulousCupcake/gbf-wiki-bookmarklets#readme",
   "dependencies": {
-    "@fbcpck/bookmarklet": "^1.1.0"
+    "bookmarklet": "^3.0.0"
   }
 }
