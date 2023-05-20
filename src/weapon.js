@@ -56,19 +56,17 @@ const MAX_ATK = document.querySelector(".prt-max-atk .txt-atk-value").textConten
 const OUGI_NAME = document.querySelector(".prt-detail-special .name-m").textContent;
 const OUGI_DESC = document.querySelector(".prt-detail-special .comment-m").textContent;
 
-const SKILL_ONE_NAME = document.querySelector(".prt-detail-support > .prt-box:nth-child(2) > .name-m")?.textContent;
-const SKILL_ONE_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(2) > :first-child")?.className.replace("ico-", "ws_")+".png";
-const SKILL_ONE_DESC = document.querySelector(".prt-detail-support > .prt-box:nth-child(2) > .comment-m")?.textContent;
-
-const SKILL_TWO_NAME = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .name-m")?.textContent;
-const SKILL_TWO_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > :first-child")?.className.replace("ico-", "ws_")+".png";
-const SKILL_TWO_DESC = document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .comment-m")?.textContent;
-const SKILL_TWO_LEVELREQ = document.querySelector(".prt-detail-support > .not-get:nth-child(3) .txt-condition-level")?.textContent.match(/\d+$/)?.[0];
-
-const SKILL_THREE_NAME = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > .name-m")?.textContent;
-const SKILL_THREE_DESC = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > .comment-m")?.textContent;
-const SKILL_THREE_ICON = document.querySelector(".prt-detail-support > .prt-box:nth-child(4) > :first-child")?.className.replace("ico-", "ws_")+".png";
-const SKILL_THREE_LEVELREQ = document.querySelector(".prt-detail-support > .not-get:nth-child(4) .txt-condition-level")?.textContent.match(/\d+$/)?.[0];
+const skill_flexboxes = document.querySelectorAll(".prt-detail-skill .prt-box-flexible");
+const skill_info = (skill) => {
+  const NAME = skill?.querySelector(".name-m")?.textContent;
+  const ICON = skill?.querySelector(".ico-skill-status")?.getAttribute("src")?.replace(/.*\//, "ws_");
+  const DESC = skill?.querySelector(".comment-m")?.textContent;
+  const LEVELREQ = skill?.querySelector(".txt-condition-level")?.textContent.match(/\d+$/)?.[0];
+  return {NAME, ICON, DESC, LEVELREQ};
+};
+const SKILL_ONE = skill_info(skill_flexboxes[0]);
+const SKILL_TWO = skill_info(skill_flexboxes[1]);
+const SKILL_THREE = skill_info(skill_flexboxes[2]);
 
 const FLAVOR = document.querySelector(".prt-flavor").textContent.trim();
 
@@ -107,26 +105,26 @@ const result = nonEmpty`{{Weapon
 |ougi_name= ${OUGI_NAME}
 |ougi= ${OUGI_DESC}
 |ougi_4s=
-|s1_name= ${SKILL_ONE_NAME}
-|s1_icon= ${SKILL_ONE_ICON}
-|s1_desc= ${SKILL_ONE_DESC}
-|s1_lvl=
+|s1_name= ${SKILL_ONE.NAME}
+|s1_icon= ${SKILL_ONE.ICON}
+|s1_desc= ${SKILL_ONE.DESC}
+|s1_lvl= ${SKILL_ONE.LEVELREQ}
 |s1_4s_name=
 |s1_4s_icon=
 |s1_4s_lvl=
 |s1_4s_desc=
-|s2_name= ${SKILL_TWO_NAME}
-|s2_icon= ${SKILL_TWO_ICON}
-|s2_desc= ${SKILL_TWO_DESC}
-|s2_lvl= ${SKILL_TWO_LEVELREQ}
+|s2_name= ${SKILL_TWO.NAME}
+|s2_icon= ${SKILL_TWO.ICON}
+|s2_desc= ${SKILL_TWO.DESC}
+|s2_lvl= ${SKILL_TWO.LEVELREQ}
 |s2_4s_name=
 |s2_4s_icon=
 |s2_4s_lvl=
 |s2_4s_desc=
-|s3_name= ${SKILL_THREE_NAME}
-|s3_icon= ${SKILL_THREE_ICON}
-|s3_desc= ${SKILL_THREE_DESC}
-|s3_lvl= ${SKILL_THREE_LEVELREQ}
+|s3_name= ${SKILL_THREE.NAME}
+|s3_icon= ${SKILL_THREE.ICON}
+|s3_desc= ${SKILL_THREE.DESC}
+|s3_lvl= ${SKILL_THREE.LEVELREQ}
 |s3_4s_name=
 |s3_4s_icon=
 |s3_4s_lvl=
