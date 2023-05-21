@@ -83,145 +83,65 @@ const PROFICIENCY = (() => {
 const MAX_HP = document.querySelector(".txt-hp-value").textContent;
 const MAX_ATK = document.querySelector(".txt-atk-value").textContent;
 
-const OUGI_COUNT = document.querySelectorAll(".prt-detail-special .prt-box").length;
-const OUGI_ONE_NAME = (() => {
-  if (OUGI_COUNT < 1) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(2) > .name").textContent;
-})();
-const OUGI_ONE_DESC = (() => {
-  if (OUGI_COUNT < 1) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(2) > .comment").textContent;
-})();
-const OUGI_TWO_NAME = (() => {
-  if (OUGI_COUNT < 2) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(3) > .name").textContent;
-})();
-const OUGI_TWO_DESC = (() => {
-  if (OUGI_COUNT < 2) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(3) > .comment").textContent;
-})();
-const OUGI_THREE_NAME = (() => {
-  if (OUGI_COUNT < 3) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(4) > .name").textContent;
-})();
-const OUGI_THREE_DESC = (() => {
-  if (OUGI_COUNT < 3) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(4) > .comment").textContent;
-})();
-const OUGI_FOUR_NAME = (() => {
-  if (OUGI_COUNT < 4) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(5) > .name").textContent;
-})();
-const OUGI_FOUR_DESC = (() => {
-  if (OUGI_COUNT < 4) return "";
-  return document.querySelector(".prt-detail-special > .prt-box:nth-child(5) > .comment").textContent;
-})();
+const ougi_flexboxes = document.querySelectorAll(".prt-detail-special .prt-box-flexible");
+const OUGI_COUNT = ougi_flexboxes.length;
+const ougi_info = (ougi) => {
+  return {NAME: ougi?.querySelector(".name-m")?.textContent, DESC: ougi?.querySelector(".comment-m")?.textContent};
+}
+const OUGI_ONE = ougi_info(ougi_flexboxes[0]);
+const OUGI_TWO = ougi_info(ougi_flexboxes[1]);
+const OUGI_THREE = ougi_info(ougi_flexboxes[2]);
+const OUGI_FOUR = ougi_info(ougi_flexboxes[3]);
 
-const ABILITY_COUNT = document.querySelectorAll(".prt-detail-action .prt-box").length;
-const ABILITY_ONE_NAME = (() => {
-  if (ABILITY_COUNT < 1) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(2) > .name").textContent;
-})();
-const ABILITY_ONE_ID = (() => {
-  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(2) > div[class^='ico-ability']")?.classList.toString();
-  const id = classList?.match(/ability([\d_]+)/)?.[1];
-  return (id) ? `Ability_m_${id}.png` : "";
-})();
-const ABILITY_ONE_DESC = (() => {
-  if (ABILITY_COUNT < 1) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(2) > .comment").textContent;
-})();
-const ABILITY_ONE_COOLDOWN = (() => {
-  if (ABILITY_COUNT < 1) return "";
-  const text = document.querySelector(".prt-detail-action > .prt-box:nth-child(2) .txt-recast").textContent;
-  const match = text.match(/\d+/);
-  const result = (match) ? match[0] : "";
-  return parseInt(result, 10);
-})();
+const ability_flexboxes = document.querySelectorAll(".prt-detail-action .prt-box-flexible");
+const ABILITY_COUNT = ability_flexboxes.length;
+const ability_info = (ability) => {
+  const NAME = ability?.querySelector(".name-m")?.textContent;
+  const DESC = ability?.querySelector(".comment-m")?.textContent;
+  const [ID, COLOR] = (() => {
+    const classList = ability?.querySelector("div[class^='ico-ability']")?.classList.toString();
+    const match = classList?.match(/ability([\d]+)_(\d)/);
+    const id = (match)? `Ability_m_${match[1]}_${match[2]}.png`: "";
+    const color = match? (() => {
+      switch (match[2]){
+        case "1": return "red";
+        case "2": return "green";
+        case "3": return "yellow";
+        case "4": return "blue";
+        case "5": return "purple";
+      }
+      return "";
+    })(): "";
+    return [id, color];
+  })();
+  const COOLDOWN = (() => {
+    const match = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/);
+    const result = (match) ? match[0] : "";
+    return parseInt(result, 10);
+  })();
+  const OBTAIN = (() => {
+    const match = ability?.querySelector(".prt-condition")?.textContent.match(/\d+/);
+    const result = (match) ? match[0] : "";
+    return parseInt(result, 10);
+  })();
+  return {NAME, DESC, ID, COLOR, COOLDOWN, OBTAIN};
+};
 
-const ABILITY_TWO_NAME = (() => {
-  if (ABILITY_COUNT < 2) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(3) > .name").textContent;
-})();
-const ABILITY_TWO_ID = (() => {
-  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(3) > div[class^='ico-ability']")?.classList.toString();
-  const id = classList?.match(/ability([\d_]+)/)?.[1];
-  return (id) ? `Ability_m_${id}.png` : "";
-})();
-const ABILITY_TWO_DESC = (() => {
-  if (ABILITY_COUNT < 2) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(3) > .comment").textContent;
-})();
-const ABILITY_TWO_COOLDOWN = (() => {
-  if (ABILITY_COUNT < 2) return "";
-  const text = document.querySelector(".prt-detail-action > .prt-box:nth-child(3) .txt-recast").textContent;
-  const match = text.match(/\d+/);
-  const result = (match) ? match[0] : "";
-  return parseInt(result, 10);
-})();
+const ABILITY_ONE = ability_info(ability_flexboxes[0]);
+const ABILITY_TWO = ability_info(ability_flexboxes[1]);
+const ABILITY_THREE = ability_info(ability_flexboxes[2]);
+const ABILITY_FOUR = ability_info(ability_flexboxes[3]);
 
-const ABILITY_THREE_NAME = (() => {
-  if (ABILITY_COUNT < 3) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(4) > .name").textContent;
-})();
-const ABILITY_THREE_ID = (() => {
-  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(4) > div[class^='ico-ability']")?.classList.toString();
-  const id = classList?.match(/ability([\d_]+)/)?.[1];
-  return (id) ? `Ability_m_${id}.png` : "";
-})();
-const ABILITY_THREE_DESC = (() => {
-  if (ABILITY_COUNT < 3) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(4) > .comment").textContent;
-})();
-const ABILITY_THREE_OBTAIN = (() => {
-  if (ABILITY_COUNT < 3) return "";
-  const text = document.querySelector(".prt-detail-action > .prt-box:nth-child(4) .prt-condition").textContent;
-  const match = text.match(/\d+/);
-  const result = (match) ? match[0] : "";
-  return parseInt(result, 10);
-})();
+const support_ability_flexboxes = document.querySelectorAll(".prt-detail-support .prt-box-flexible");
+const SUPPORT_ABILITY_COUNT = support_ability_flexboxes.length;
+const support_ability_info = (ability) => {
+  return {NAME: ability?.querySelector(".name-m")?.textContent, DESC: ability?.querySelector(".comment-m")?.textContent};
+}
 
-const ABILITY_FOUR_NAME = (() => {
-  if (ABILITY_COUNT < 4) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(5) > .name").textContent;
-})();
-const ABILITY_FOUR_ID = (() => {
-  const classList = document.querySelector(".prt-detail-action > .prt-box:nth-child(5) > div[class^='ico-ability']")?.classList.toString();
-  const id = classList?.match(/ability([\d_]+)/)?.[1];
-  return (id) ? `Ability_m_${id}.png` : "";
-})();
-const ABILITY_FOUR_DESC = (() => {
-  if (ABILITY_COUNT < 4) return "";
-  return document.querySelector(".prt-detail-action > .prt-box:nth-child(5) > .comment").textContent;
-})();
-const ABILITY_FOUR_OBTAIN = (() => {
-  if (ABILITY_COUNT < 4) return "";
-  const text = document.querySelector(".prt-detail-action > .prt-box:nth-child(5) .prt-condition").textContent;
-  const match = text.match(/\d+/);
-  const result = (match) ? match[0] : "";
-  return parseInt(result, 10);
-})();
+const SUPPORT_ABILITY_ONE = support_ability_info(support_ability_flexboxes[0])
+const SUPPORT_ABILITY_TWO = support_ability_info(support_ability_flexboxes[1])
 
-const SUPPORT_ABILITY_COUNT = document.querySelectorAll(".prt-detail-support .prt-box").length;
-const SUPPORT_ABILITY_ONE_NAME = (() => {
-  if (SUPPORT_ABILITY_COUNT < 1) return "";
-  return document.querySelector(".prt-detail-support > .prt-box:nth-child(2) > .name").textContent;
-})();
-const SUPPORT_ABILITY_ONE_DESC = (() => {
-  if (SUPPORT_ABILITY_COUNT < 1) return "";
-  return document.querySelector(".prt-detail-support > .prt-box:nth-child(2) > .comment").textContent;
-})();
-const SUPPORT_ABILITY_TWO_NAME = (() => {
-  if (SUPPORT_ABILITY_COUNT < 2) return "";
-  return document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .name").textContent;
-})();
-const SUPPORT_ABILITY_TWO_DESC = (() => {
-  if (SUPPORT_ABILITY_COUNT < 2) return "";
-  return document.querySelector(".prt-detail-support > .prt-box:nth-child(3) > .comment").textContent;
-})();
-
-const result = nonEmpty`
-{{CharacterTabs|base={{BASENAME}}}}
+const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 {{Character
 |id= ${ID}
 |charid=
@@ -243,6 +163,7 @@ const result = nonEmpty`
 |base_evo= 4
 |max_evo= 4
 |uncap_type= ${RARITY}
+|expedition_type=
 |blush_value=
 |art1= {{PAGENAME}} A.png
 |art2= {{PAGENAME}} B.png
@@ -268,51 +189,51 @@ const result = nonEmpty`
 |flb_hp=
 |bonus_hp=
 |ougi_count= ${OUGI_COUNT}
-|ougi_name= ${OUGI_ONE_NAME}
-|ougi_desc= ${OUGI_ONE_DESC}
-|ougi2_name= ${OUGI_TWO_NAME}
-|ougi2_desc= ${OUGI_TWO_DESC}
-|ougi3_name= ${OUGI_THREE_NAME}
-|ougi3_desc= ${OUGI_THREE_DESC}
-|ougi4_name= ${OUGI_FOUR_NAME}
-|ougi4_desc= ${OUGI_FOUR_DESC}
+|ougi_name= ${OUGI_ONE.NAME}
+|ougi_desc= ${OUGI_ONE.DESC}
+|ougi2_name= ${OUGI_TWO.NAME}
+|ougi2_desc= ${OUGI_TWO.DESC}
+|ougi3_name= ${OUGI_THREE.NAME}
+|ougi3_desc= ${OUGI_THREE.DESC}
+|ougi4_name= ${OUGI_FOUR.NAME}
+|ougi4_desc= ${OUGI_FOUR.DESC}
 |abilitysubtitle=
 |abilitycount= ${ABILITY_COUNT}
-|a1_icon= ${ABILITY_ONE_ID}
-|a1_color=
-|a1_name= ${ABILITY_ONE_NAME}
-|a1_cd= {{InfoCd|num=0|cooldown=${ABILITY_ONE_COOLDOWN}|cooldown1=|level1=55}}
+|a1_icon= ${ABILITY_ONE.ID}
+|a1_color=${ABILITY_ONE.COLOR}
+|a1_name= ${ABILITY_ONE.NAME}
+|a1_cd= {{InfoCd|num=0|cooldown=${ABILITY_ONE.COOLDOWN}|cooldown1=|level1=55}}
 |a1_dur= {{InfoDur|type=t|duration=}}
 |a1_oblevel= {{InfoOb|obtained=1|enhanced=55}}
-|a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE_DESC}}}
-|a2_icon= ${ABILITY_TWO_ID}
-|a2_color=
-|a2_name= ${ABILITY_TWO_NAME}
-|a2_cd= {{InfoCd|num=0|cooldown=${ABILITY_TWO_COOLDOWN}|cooldown1=|level1=75}}
+|a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE.DESC}}}
+|a2_icon= ${ABILITY_TWO.ID}
+|a2_color=${ABILITY_TWO.COLOR}
+|a2_name= ${ABILITY_TWO.NAME}
+|a2_cd= {{InfoCd|num=0|cooldown=${ABILITY_TWO.COOLDOWN}|cooldown1=|level1=75}}
 |a2_dur= {{InfoDur|type=t|duration=}}
 |a2_oblevel= {{InfoOb|obtained=1|enhanced=75}}
-|a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO_DESC}}}
-|a3_icon= ${ABILITY_THREE_ID}
-|a3_color=
-|a3_name= ${ABILITY_THREE_NAME}
-|a3_cd= {{InfoCd|num=0|cooldown=}}
+|a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO.DESC}}}
+|a3_icon= ${ABILITY_THREE.ID}
+|a3_color=${ABILITY_THREE.COLOR}
+|a3_name= ${ABILITY_THREE.NAME}
+|a3_cd= {{InfoCd|num=0|cooldown=${ABILITY_THREE.COOLDOWN}}}
 |a3_dur= {{InfoDur|type=t|duration=}}
-|a3_oblevel= {{InfoOb|obtained=${ABILITY_THREE_OBTAIN}}}
-|a3_effdesc= {{InfoDes|num=0|des=${ABILITY_THREE_DESC}}}
-|a4_icon= ${ABILITY_FOUR_ID}
-|a4_color=
-|a4_name= ${ABILITY_FOUR_NAME}
-|a4_cd= {{InfoCd|num=0|cooldown=}}
+|a3_oblevel= {{InfoOb|obtained=${ABILITY_THREE.OBTAIN}}}
+|a3_effdesc= {{InfoDes|num=0|des=${ABILITY_THREE.DESC}}}
+|a4_icon= ${ABILITY_FOUR.ID}
+|a4_color=${ABILITY_FOUR.COLOR}
+|a4_name= ${ABILITY_FOUR.NAME}
+|a4_cd= {{InfoCd|num=0|cooldown=${ABILITY_FOUR.COOLDOWN}}}
 |a4_dur= {{InfoDur|type=t|duration=}}
-|a4_oblevel= {{InfoOb|obtained=${ABILITY_FOUR_OBTAIN}}}
-|a4_effdesc= {{InfoDes|num=0|des=${ABILITY_FOUR_DESC}}}
+|a4_oblevel= {{InfoOb|obtained=${ABILITY_FOUR.OBTAIN}}}
+|a4_effdesc= {{InfoDes|num=0|des=${ABILITY_FOUR.DESC}}}
 |s_abilitycount= ${SUPPORT_ABILITY_COUNT}
-|sa_name= ${SUPPORT_ABILITY_ONE_NAME}
+|sa_name= ${SUPPORT_ABILITY_ONE.NAME}
 |sa_level= {{InfoOb|obtained=1}}
-|sa_desc= ${SUPPORT_ABILITY_ONE_DESC}
-|sa2_name= ${SUPPORT_ABILITY_TWO_NAME}
+|sa_desc= ${SUPPORT_ABILITY_ONE.DESC}
+|sa2_name= ${SUPPORT_ABILITY_TWO.NAME}
 |sa2_level= {{InfoOb|obtained=1}}
-|sa2_desc= ${SUPPORT_ABILITY_TWO_DESC}
+|sa2_desc= ${SUPPORT_ABILITY_TWO.DESC}
 |sa_emp_desc=
 |perk11=
 |perk12=
