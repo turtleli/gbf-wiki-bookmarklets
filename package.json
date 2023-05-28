@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/FabulousCupcake/gbf-wiki-bookmarklets#readme",
   "dependencies": {
-    "bookmarklet": "^3.0.0"
+    "terser": "^5.17.7"
   }
 }
