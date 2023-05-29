@@ -143,13 +143,13 @@ const SUPPORT_ABILITY_TWO = support_ability_info(support_ability_flexboxes[1])
 
 const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 {{Character
-|id= ${ID}
+|id=${ID}
 |charid=
-|series= ${SERIES}
+|series=${SERIES}
 |jpname=
 |jptitle=
 |jpva=
-|name= ${NAME}
+|name=${NAME}
 |release_date=
 |link_gamewith=
 |link_jpwiki=
@@ -160,80 +160,80 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |title_source=
 |5star=
 |5star_date=
-|base_evo= 4
-|max_evo= 4
-|uncap_type= ${RARITY}
+|base_evo=4
+|max_evo=4
+|uncap_type=${RARITY}
 |expedition_type=
 |blush_value=
-|art1= {{PAGENAME}} A.png
-|art2= {{PAGENAME}} B.png
+|art1={{PAGENAME}} A.png
+|art2={{PAGENAME}} B.png
 |art3=
 |art_story1=
-|sprite1= {{PAGENAME}} SDA.png
-|sprite2= {{PAGENAME}} SDB.png
+|sprite1={{PAGENAME}} SDA.png
+|sprite2={{PAGENAME}} SDB.png
 |sprite3=
-|rarity= ${RARITY}
-|element= ${ELEMENT}
-|type= ${TYPE}
-|race= ${RACE}
-|va= ${VOICE_ACTOR}
+|rarity=${RARITY}
+|element=${ELEMENT}
+|type=${TYPE}
+|race=${RACE}
+|va=${VOICE_ACTOR}
 |join=
-|join_weapon= ${JOIN_WEAPON}
-|weapon= ${PROFICIENCY}
+|join_weapon=${JOIN_WEAPON}
+|weapon=${PROFICIENCY}
 |min_atk=
-|max_atk= ${MAX_ATK}
+|max_atk=${MAX_ATK}
 |flb_atk=
 |bonus_atk=
 |min_hp=
-|max_hp= ${MAX_HP}
+|max_hp=${MAX_HP}
 |flb_hp=
 |bonus_hp=
-|ougi_count= ${OUGI_COUNT}
-|ougi_name= ${OUGI_ONE.NAME}
-|ougi_desc= ${OUGI_ONE.DESC}
-|ougi2_name= ${OUGI_TWO.NAME}
-|ougi2_desc= ${OUGI_TWO.DESC}
-|ougi3_name= ${OUGI_THREE.NAME}
-|ougi3_desc= ${OUGI_THREE.DESC}
-|ougi4_name= ${OUGI_FOUR.NAME}
-|ougi4_desc= ${OUGI_FOUR.DESC}
+|ougi_count=${OUGI_COUNT}
+|ougi_name=${OUGI_ONE.NAME}
+|ougi_desc=${OUGI_ONE.DESC}
+|ougi2_name=${OUGI_TWO.NAME}
+|ougi2_desc=${OUGI_TWO.DESC}
+|ougi3_name=${OUGI_THREE.NAME}
+|ougi3_desc=${OUGI_THREE.DESC}
+|ougi4_name=${OUGI_FOUR.NAME}
+|ougi4_desc=${OUGI_FOUR.DESC}
 |abilitysubtitle=
-|abilitycount= ${ABILITY_COUNT}
-|a1_icon= ${ABILITY_ONE.ID}
+|abilitycount=${ABILITY_COUNT}
+|a1_icon=${ABILITY_ONE.ID}
 |a1_color=${ABILITY_ONE.COLOR}
-|a1_name= ${ABILITY_ONE.NAME}
-|a1_cd= {{InfoCd|num=0|cooldown=${ABILITY_ONE.COOLDOWN}|cooldown1=|level1=55}}
-|a1_dur= {{InfoDur|type=t|duration=}}
-|a1_oblevel= {{InfoOb|obtained=1|enhanced=55}}
-|a1_effdesc= {{InfoDes|num=0|des=${ABILITY_ONE.DESC}}}
-|a2_icon= ${ABILITY_TWO.ID}
+|a1_name=${ABILITY_ONE.NAME}
+|a1_cd={{InfoCd|num=0|cooldown=${ABILITY_ONE.COOLDOWN}|cooldown1=|level1=55}}
+|a1_dur={{InfoDur|type=t|duration=}}
+|a1_oblevel={{InfoOb|obtained=1|enhanced=55}}
+|a1_effdesc={{InfoDes|num=0|des=${ABILITY_ONE.DESC}}}
+|a2_icon=${ABILITY_TWO.ID}
 |a2_color=${ABILITY_TWO.COLOR}
-|a2_name= ${ABILITY_TWO.NAME}
-|a2_cd= {{InfoCd|num=0|cooldown=${ABILITY_TWO.COOLDOWN}|cooldown1=|level1=75}}
-|a2_dur= {{InfoDur|type=t|duration=}}
-|a2_oblevel= {{InfoOb|obtained=1|enhanced=75}}
-|a2_effdesc= {{InfoDes|num=0|des=${ABILITY_TWO.DESC}}}
-|a3_icon= ${ABILITY_THREE.ID}
+|a2_name=${ABILITY_TWO.NAME}
+|a2_cd={{InfoCd|num=0|cooldown=${ABILITY_TWO.COOLDOWN}|cooldown1=|level1=75}}
+|a2_dur={{InfoDur|type=t|duration=}}
+|a2_oblevel={{InfoOb|obtained=1|enhanced=75}}
+|a2_effdesc={{InfoDes|num=0|des=${ABILITY_TWO.DESC}}}
+|a3_icon=${ABILITY_THREE.ID}
 |a3_color=${ABILITY_THREE.COLOR}
-|a3_name= ${ABILITY_THREE.NAME}
-|a3_cd= {{InfoCd|num=0|cooldown=${ABILITY_THREE.COOLDOWN}}}
-|a3_dur= {{InfoDur|type=t|duration=}}
-|a3_oblevel= {{InfoOb|obtained=${ABILITY_THREE.OBTAIN}}}
-|a3_effdesc= {{InfoDes|num=0|des=${ABILITY_THREE.DESC}}}
-|a4_icon= ${ABILITY_FOUR.ID}
+|a3_name=${ABILITY_THREE.NAME}
+|a3_cd={{InfoCd|num=0|cooldown=${ABILITY_THREE.COOLDOWN}}}
+|a3_dur={{InfoDur|type=t|duration=}}
+|a3_oblevel={{InfoOb|obtained=${ABILITY_THREE.OBTAIN}}}
+|a3_effdesc={{InfoDes|num=0|des=${ABILITY_THREE.DESC}}}
+|a4_icon=${ABILITY_FOUR.ID}
 |a4_color=${ABILITY_FOUR.COLOR}
-|a4_name= ${ABILITY_FOUR.NAME}
-|a4_cd= {{InfoCd|num=0|cooldown=${ABILITY_FOUR.COOLDOWN}}}
-|a4_dur= {{InfoDur|type=t|duration=}}
-|a4_oblevel= {{InfoOb|obtained=${ABILITY_FOUR.OBTAIN}}}
-|a4_effdesc= {{InfoDes|num=0|des=${ABILITY_FOUR.DESC}}}
-|s_abilitycount= ${SUPPORT_ABILITY_COUNT}
-|sa_name= ${SUPPORT_ABILITY_ONE.NAME}
-|sa_level= {{InfoOb|obtained=1}}
-|sa_desc= ${SUPPORT_ABILITY_ONE.DESC}
-|sa2_name= ${SUPPORT_ABILITY_TWO.NAME}
-|sa2_level= {{InfoOb|obtained=1}}
-|sa2_desc= ${SUPPORT_ABILITY_TWO.DESC}
+|a4_name=${ABILITY_FOUR.NAME}
+|a4_cd={{InfoCd|num=0|cooldown=${ABILITY_FOUR.COOLDOWN}}}
+|a4_dur={{InfoDur|type=t|duration=}}
+|a4_oblevel={{InfoOb|obtained=${ABILITY_FOUR.OBTAIN}}}
+|a4_effdesc={{InfoDes|num=0|des=${ABILITY_FOUR.DESC}}}
+|s_abilitycount=${SUPPORT_ABILITY_COUNT}
+|sa_name=${SUPPORT_ABILITY_ONE.NAME}
+|sa_level={{InfoOb|obtained=1}}
+|sa_desc=${SUPPORT_ABILITY_ONE.DESC}
+|sa2_name=${SUPPORT_ABILITY_TWO.NAME}
+|sa2_level={{InfoOb|obtained=1}}
+|sa2_desc=${SUPPORT_ABILITY_TWO.DESC}
 |sa_emp_desc=
 |perk11=
 |perk12=
