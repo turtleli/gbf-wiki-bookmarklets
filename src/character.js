@@ -95,35 +95,23 @@ const OUGI_FOUR = ougi_info(ougi_flexboxes[3]);
 
 const ability_flexboxes = document.querySelectorAll(".prt-detail-action .prt-box-flexible");
 const ABILITY_COUNT = ability_flexboxes.length;
-const ability_info = (ability) => {
+const ability_info = ability => {
   const NAME = ability?.querySelector(".name-m")?.textContent;
   const DESC = ability?.querySelector(".comment-m")?.textContent;
-  const [ID, COLOR] = (() => {
-    const classList = ability?.querySelector("div[class^='ico-ability']")?.classList.toString();
-    const match = classList?.match(/ability([\d]+)_(\d)/);
-    const id = (match)? `Ability_m_${match[1]}_${match[2]}.png`: "";
-    const color = match? (() => {
-      switch (match[2]){
-        case "1": return "red";
-        case "2": return "green";
-        case "3": return "yellow";
-        case "4": return "blue";
-        case "5": return "purple";
-      }
-      return "";
-    })(): "";
-    return [id, color];
+  const ID = ability?.querySelector(".img-ability-icon")?.getAttribute("src")?.replace(/.*\//, "Ability_m_");
+  const COLOR = (() => {
+    switch (ID?.match(/(\d)\.png$/)?.[1]) {
+      case "1": return "red";
+      case "2": return "green";
+      case "3": return "yellow";
+      case "4": return "blue";
+      case "5": return "purple";
+      default: return "";
+    }
   })();
-  const COOLDOWN = (() => {
-    const match = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/);
-    const result = (match) ? match[0] : "";
-    return parseInt(result, 10);
-  })();
-  const OBTAIN = (() => {
-    const match = ability?.querySelector(".prt-condition")?.textContent.match(/\d+/);
-    const result = (match) ? match[0] : "";
-    return parseInt(result, 10);
-  })();
+  const COOLDOWN = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/)?.[0];
+  const OBTAIN = ability?.querySelector(".prt-condition")?.textContent.match(/\d+/)?.[0];
+
   return {NAME, DESC, ID, COLOR, COOLDOWN, OBTAIN};
 };
 
