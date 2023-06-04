@@ -13,7 +13,6 @@ function nonEmpty(parts) {
     // Check if we want to skip expression part
     if (Array.isArray(expr)) continue;
     if (!expr) continue;
-    if (expr === "undefined.png") continue;
 
     // Append expression part
     res += expr;
