@@ -1,21 +1,39 @@
-const bookmarklet = require("bookmarklet");
+const {minify} = require("terser");
 const fs = require("fs");
 
 const lib = require("./src/lib");
 const src = require("./src");
 
 // Combine scripts in ./src/lib/
-let libScripts = "";
-Object.keys(lib).forEach(key => {
-  libScripts += lib[key];
-});
+const lib_scripts = Object.values(lib).join('');
 
-// Generate bookmarklet for each item in ./src/
-Object.keys(src).forEach(async key => {
-  const script = `${libScripts} ${src[key]}`;
-  const option = {};
-  const result = await bookmarklet.convert(script, option);
+const html_template = fs.readFileSync("index.html", { encoding: "utf8"});
+const anchor = html_template.match(/[\s]*<a .*?href="#placeholder"[^>]*><\/a>/)?.[0];
+if (anchor == null) {
+  console.log("Could not find placeholder anchor tag.");
+  return;
+}
+const [html_start, html_end] = html_template.split(anchor);
 
-  const path = `./dist/${key}.js`;
-  fs.writeFileSync(path, result);
-});
+(async () => {
+  let options = {
+    mangle: {
+      toplevel: true,
+    },
+    compress: {
+      passes: 2
+    }
+  };
+
+  // Generate bookmarklet link for each item in ./src/
+  let result = "";
+  for (const key in src) {
+    const script = `(() => {${lib_scripts}${src[key]}})();`;
+    const bookmarklet = (await minify(script, options)).code.replace(/%|"|<|>|\n/g, encodeURIComponent);
+    result += anchor.replace("#placeholder", `javascript: ${bookmarklet}`).replace("><", `>${key} Template<`);
+  }
+  const date = `<!-- Generated at ${Date()} -->`;
+
+  fs.mkdirSync("public", {recursive: true});
+  fs.writeFileSync("public/index.html", html_start + result + html_end + date);
+})();
