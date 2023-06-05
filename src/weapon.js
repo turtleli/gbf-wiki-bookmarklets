@@ -1,5 +1,3 @@
-(function(){
-
 // Check page correctness
 if (!location.hash.match("#gacha/weapon")) {
   const answer = confirm("You don't seem to be in #gacha/weapon page. Run anyway?");
@@ -57,16 +55,16 @@ const OUGI_NAME = document.querySelector(".prt-detail-special .name-m").textCont
 const OUGI_DESC = document.querySelector(".prt-detail-special .comment-m").textContent;
 
 const skill_flexboxes = document.querySelectorAll(".prt-detail-skill .prt-box-flexible");
-const skill_info = (skill) => {
+const skill_info = skill => {
   const NAME = skill?.querySelector(".name-m")?.textContent;
   const ICON = skill?.querySelector(".ico-skill-status")?.getAttribute("src")?.replace(/.*\//, "ws_");
   const DESC = skill?.querySelector(".comment-m")?.textContent;
   const LEVELREQ = skill?.querySelector(".txt-condition-level")?.textContent.match(/\d+$/)?.[0];
-  return {NAME, ICON, DESC, LEVELREQ};
+  return [NAME, ICON, DESC, LEVELREQ];
 };
-const SKILL_ONE = skill_info(skill_flexboxes[0]);
-const SKILL_TWO = skill_info(skill_flexboxes[1]);
-const SKILL_THREE = skill_info(skill_flexboxes[2]);
+const [SKILL1_NAME, SKILL1_ICON, SKILL1_DESC, SKILL1_LEVELREQ] = skill_info(skill_flexboxes[0]);
+const [SKILL2_NAME, SKILL2_ICON, SKILL2_DESC, SKILL2_LEVELREQ] = skill_info(skill_flexboxes[1]);
+const [SKILL3_NAME, SKILL3_ICON, SKILL3_DESC, SKILL3_LEVELREQ] = skill_info(skill_flexboxes[2]);
 
 const FLAVOR = document.querySelector(".prt-flavor").textContent.trim();
 
@@ -105,26 +103,26 @@ const result = nonEmpty`{{Weapon
 |ougi_name=${OUGI_NAME}
 |ougi=${OUGI_DESC}
 |ougi_4s=
-|s1_name=${SKILL_ONE.NAME}
-|s1_icon=${SKILL_ONE.ICON}
-|s1_desc=${SKILL_ONE.DESC}
-|s1_lvl=${SKILL_ONE.LEVELREQ}
+|s1_name=${SKILL1_NAME}
+|s1_icon=${SKILL1_ICON}
+|s1_desc=${SKILL1_DESC}
+|s1_lvl=${SKILL1_LEVELREQ}
 |s1_4s_name=
 |s1_4s_icon=
 |s1_4s_lvl=
 |s1_4s_desc=
-|s2_name=${SKILL_TWO.NAME}
-|s2_icon=${SKILL_TWO.ICON}
-|s2_desc=${SKILL_TWO.DESC}
-|s2_lvl=${SKILL_TWO.LEVELREQ}
+|s2_name=${SKILL2_NAME}
+|s2_icon=${SKILL2_ICON}
+|s2_desc=${SKILL2_DESC}
+|s2_lvl=${SKILL2_LEVELREQ}
 |s2_4s_name=
 |s2_4s_icon=
 |s2_4s_lvl=
 |s2_4s_desc=
-|s3_name=${SKILL_THREE.NAME}
-|s3_icon=${SKILL_THREE.ICON}
-|s3_desc=${SKILL_THREE.DESC}
-|s3_lvl=${SKILL_THREE.LEVELREQ}
+|s3_name=${SKILL3_NAME}
+|s3_icon=${SKILL3_ICON}
+|s3_desc=${SKILL3_DESC}
+|s3_lvl=${SKILL3_LEVELREQ}
 |s3_4s_name=
 |s3_4s_icon=
 |s3_4s_lvl=
@@ -136,5 +134,3 @@ const result = nonEmpty`{{Weapon
 `;
 
 copyToClipboard(result);
-
-})();

@@ -1,5 +1,3 @@
-(function(){
-
 // Check page correctness
 if (!location.hash.match("#gacha/chara")) {
   const answer = confirm("You don't seem to be in #gacha/chara page. Run anyway?");
@@ -83,18 +81,20 @@ const PROFICIENCY = (() => {
 const MAX_HP = document.querySelector(".txt-hp-value").textContent;
 const MAX_ATK = document.querySelector(".txt-atk-value").textContent;
 
+const name_comment_m_info = box => [box?.querySelector(".name-m")?.textContent, box?.querySelector(".comment-m")?.textContent];
+
 const ougi_flexboxes = document.querySelectorAll(".prt-detail-special .prt-box-flexible");
 const OUGI_COUNT = ougi_flexboxes.length;
-const ougi_info = (ougi) => {
-  return {NAME: ougi?.querySelector(".name-m")?.textContent, DESC: ougi?.querySelector(".comment-m")?.textContent};
-}
-const OUGI_ONE = ougi_info(ougi_flexboxes[0]);
-const OUGI_TWO = ougi_info(ougi_flexboxes[1]);
-const OUGI_THREE = ougi_info(ougi_flexboxes[2]);
-const OUGI_FOUR = ougi_info(ougi_flexboxes[3]);
+const [OUGI1_NAME, OUGI1_DESC] = name_comment_m_info(ougi_flexboxes[0]);
+const [OUGI2_NAME, OUGI2_DESC] = name_comment_m_info(ougi_flexboxes[1]);
+const [OUGI3_NAME, OUGI3_DESC] = name_comment_m_info(ougi_flexboxes[2]);
+const [OUGI4_NAME, OUGI4_DESC] = name_comment_m_info(ougi_flexboxes[3]);
 
-const ability_flexboxes = document.querySelectorAll(".prt-detail-action .prt-box-flexible");
-const ABILITY_COUNT = ability_flexboxes.length;
+const support_ability_flexboxes = document.querySelectorAll(".prt-detail-support .prt-box-flexible");
+const SUPPORT_ABILITY_COUNT = support_ability_flexboxes.length;
+const [SUPPORT_ABILITY1_NAME, SUPPORT_ABILITY1_DESC] = name_comment_m_info(support_ability_flexboxes[0])
+const [SUPPORT_ABILITY2_NAME, SUPPORT_ABILITY2_DESC] = name_comment_m_info(support_ability_flexboxes[1])
+
 const ability_info = ability => {
   const NAME = ability?.querySelector(".name-m")?.textContent;
   const DESC = ability?.querySelector(".comment-m")?.textContent;
@@ -106,28 +106,20 @@ const ability_info = ability => {
       case "3": return "yellow";
       case "4": return "blue";
       case "5": return "purple";
-      default: return "";
     }
   })();
   const COOLDOWN = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/)?.[0];
   const OBTAIN = ability?.querySelector(".prt-condition")?.textContent.match(/\d+/)?.[0];
 
-  return {NAME, DESC, ID, COLOR, COOLDOWN, OBTAIN};
+  return [NAME, DESC, ID, COLOR, COOLDOWN, OBTAIN];
 };
 
-const ABILITY_ONE = ability_info(ability_flexboxes[0]);
-const ABILITY_TWO = ability_info(ability_flexboxes[1]);
-const ABILITY_THREE = ability_info(ability_flexboxes[2]);
-const ABILITY_FOUR = ability_info(ability_flexboxes[3]);
-
-const support_ability_flexboxes = document.querySelectorAll(".prt-detail-support .prt-box-flexible");
-const SUPPORT_ABILITY_COUNT = support_ability_flexboxes.length;
-const support_ability_info = (ability) => {
-  return {NAME: ability?.querySelector(".name-m")?.textContent, DESC: ability?.querySelector(".comment-m")?.textContent};
-}
-
-const SUPPORT_ABILITY_ONE = support_ability_info(support_ability_flexboxes[0])
-const SUPPORT_ABILITY_TWO = support_ability_info(support_ability_flexboxes[1])
+const ability_flexboxes = document.querySelectorAll(".prt-detail-action .prt-box-flexible");
+const ABILITY_COUNT = ability_flexboxes.length;
+const [ABILITY1_NAME, ABILITY1_DESC, ABILITY1_ID, ABILITY1_COLOR, ABILITY1_COOLDOWN] = ability_info(ability_flexboxes[0]);
+const [ABILITY2_NAME, ABILITY2_DESC, ABILITY2_ID, ABILITY2_COLOR, ABILITY2_COOLDOWN] = ability_info(ability_flexboxes[1]);
+const [ABILITY3_NAME, ABILITY3_DESC, ABILITY3_ID, ABILITY3_COLOR, ABILITY3_COOLDOWN, ABILITY3_OBTAIN] = ability_info(ability_flexboxes[2]);
+const [ABILITY4_NAME, ABILITY4_DESC, ABILITY4_ID, ABILITY4_COLOR, ABILITY4_COOLDOWN, ABILITY4_OBTAIN] = ability_info(ability_flexboxes[3]);
 
 const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 {{Character
@@ -177,51 +169,51 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |flb_hp=
 |bonus_hp=
 |ougi_count=${OUGI_COUNT}
-|ougi_name=${OUGI_ONE.NAME}
-|ougi_desc=${OUGI_ONE.DESC}
-|ougi2_name=${OUGI_TWO.NAME}
-|ougi2_desc=${OUGI_TWO.DESC}
-|ougi3_name=${OUGI_THREE.NAME}
-|ougi3_desc=${OUGI_THREE.DESC}
-|ougi4_name=${OUGI_FOUR.NAME}
-|ougi4_desc=${OUGI_FOUR.DESC}
+|ougi_name=${OUGI1_NAME}
+|ougi_desc=${OUGI1_DESC}
+|ougi2_name=${OUGI2_NAME}
+|ougi2_desc=${OUGI2_DESC}
+|ougi3_name=${OUGI3_NAME}
+|ougi3_desc=${OUGI3_DESC}
+|ougi4_name=${OUGI4_NAME}
+|ougi4_desc=${OUGI4_DESC}
 |abilitysubtitle=
 |abilitycount=${ABILITY_COUNT}
-|a1_icon=${ABILITY_ONE.ID}
-|a1_color=${ABILITY_ONE.COLOR}
-|a1_name=${ABILITY_ONE.NAME}
-|a1_cd={{InfoCd|num=0|cooldown=${ABILITY_ONE.COOLDOWN}|cooldown1=|level1=55}}
+|a1_icon=${ABILITY1_ID}
+|a1_color=${ABILITY1_COLOR}
+|a1_name=${ABILITY1_NAME}
+|a1_cd={{InfoCd|num=0|cooldown=${ABILITY1_COOLDOWN}|cooldown1=|level1=55}}
 |a1_dur={{InfoDur|type=t|duration=}}
 |a1_oblevel={{InfoOb|obtained=1|enhanced=55}}
-|a1_effdesc={{InfoDes|num=0|des=${ABILITY_ONE.DESC}}}
-|a2_icon=${ABILITY_TWO.ID}
-|a2_color=${ABILITY_TWO.COLOR}
-|a2_name=${ABILITY_TWO.NAME}
-|a2_cd={{InfoCd|num=0|cooldown=${ABILITY_TWO.COOLDOWN}|cooldown1=|level1=75}}
+|a1_effdesc={{InfoDes|num=0|des=${ABILITY1_DESC}}}
+|a2_icon=${ABILITY2_ID}
+|a2_color=${ABILITY2_COLOR}
+|a2_name=${ABILITY2_NAME}
+|a2_cd={{InfoCd|num=0|cooldown=${ABILITY2_COOLDOWN}|cooldown1=|level1=75}}
 |a2_dur={{InfoDur|type=t|duration=}}
 |a2_oblevel={{InfoOb|obtained=1|enhanced=75}}
-|a2_effdesc={{InfoDes|num=0|des=${ABILITY_TWO.DESC}}}
-|a3_icon=${ABILITY_THREE.ID}
-|a3_color=${ABILITY_THREE.COLOR}
-|a3_name=${ABILITY_THREE.NAME}
-|a3_cd={{InfoCd|num=0|cooldown=${ABILITY_THREE.COOLDOWN}}}
+|a2_effdesc={{InfoDes|num=0|des=${ABILITY2_DESC}}}
+|a3_icon=${ABILITY3_ID}
+|a3_color=${ABILITY3_COLOR}
+|a3_name=${ABILITY3_NAME}
+|a3_cd={{InfoCd|num=0|cooldown=${ABILITY3_COOLDOWN}}}
 |a3_dur={{InfoDur|type=t|duration=}}
-|a3_oblevel={{InfoOb|obtained=${ABILITY_THREE.OBTAIN}}}
-|a3_effdesc={{InfoDes|num=0|des=${ABILITY_THREE.DESC}}}
-|a4_icon=${ABILITY_FOUR.ID}
-|a4_color=${ABILITY_FOUR.COLOR}
-|a4_name=${ABILITY_FOUR.NAME}
-|a4_cd={{InfoCd|num=0|cooldown=${ABILITY_FOUR.COOLDOWN}}}
+|a3_oblevel={{InfoOb|obtained=${ABILITY3_OBTAIN}}}
+|a3_effdesc={{InfoDes|num=0|des=${ABILITY3_DESC}}}
+|a4_icon=${ABILITY4_ID}
+|a4_color=${ABILITY4_COLOR}
+|a4_name=${ABILITY4_NAME}
+|a4_cd={{InfoCd|num=0|cooldown=${ABILITY4_COOLDOWN}}}
 |a4_dur={{InfoDur|type=t|duration=}}
-|a4_oblevel={{InfoOb|obtained=${ABILITY_FOUR.OBTAIN}}}
-|a4_effdesc={{InfoDes|num=0|des=${ABILITY_FOUR.DESC}}}
+|a4_oblevel={{InfoOb|obtained=${ABILITY4_OBTAIN}}}
+|a4_effdesc={{InfoDes|num=0|des=${ABILITY4_DESC}}}
 |s_abilitycount=${SUPPORT_ABILITY_COUNT}
-|sa_name=${SUPPORT_ABILITY_ONE.NAME}
+|sa_name=${SUPPORT_ABILITY1_NAME}
 |sa_level={{InfoOb|obtained=1}}
-|sa_desc=${SUPPORT_ABILITY_ONE.DESC}
-|sa2_name=${SUPPORT_ABILITY_TWO.NAME}
+|sa_desc=${SUPPORT_ABILITY1_DESC}
+|sa2_name=${SUPPORT_ABILITY2_NAME}
 |sa2_level={{InfoOb|obtained=1}}
-|sa2_desc=${SUPPORT_ABILITY_TWO.DESC}
+|sa2_desc=${SUPPORT_ABILITY2_DESC}
 |sa_emp_desc=
 |perk11=
 |perk12=
@@ -247,5 +239,3 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 `;
 
 copyToClipboard(result);
-
-})();

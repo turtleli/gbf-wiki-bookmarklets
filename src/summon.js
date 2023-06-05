@@ -1,5 +1,3 @@
-(function(){
-
 // Check page correctness
 if (!location.hash.match("#gacha/summon")) {
   const answer = confirm("You don't seem to be in #gacha/summon page. Run anyway?");
@@ -122,5 +120,3 @@ const result = nonEmpty`{{Summon
 `;
 
 copyToClipboard(result);
-
-})();

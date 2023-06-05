@@ -1,5 +1,3 @@
-(function(){
-
 // Check page correctness
 if (!location.hash.match("#raid_multi")) {
   const answer = confirm("You don't seem to be in #raid_multi page. Run anyway?");
@@ -72,5 +70,3 @@ for (const boss of boss_list) {
 }
 
 copyToClipboard(result);
-
-})();
