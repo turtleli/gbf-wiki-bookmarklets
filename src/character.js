@@ -95,7 +95,7 @@ const SUPPORT_ABILITY_COUNT = support_ability_flexboxes.length;
 const [SUPPORT_ABILITY1_NAME, SUPPORT_ABILITY1_DESC] = name_comment_m_info(support_ability_flexboxes[0])
 const [SUPPORT_ABILITY2_NAME, SUPPORT_ABILITY2_DESC] = name_comment_m_info(support_ability_flexboxes[1])
 
-const ability_info = ability => {
+const ability_info = (ability, enhance_level) => {
   const NAME = ability?.querySelector(".name-m")?.textContent;
   const DESC = ability?.querySelector(".comment-m")?.textContent;
   const ID = ability?.querySelector(".img-ability-icon")?.getAttribute("src")?.replace(/.*\//, "Ability_m_");
@@ -108,16 +108,23 @@ const ability_info = ability => {
       case "5": return "purple";
     }
   })();
-  const COOLDOWN = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/)?.[0];
-  const OBTAIN = ability?.querySelector(".prt-condition")?.textContent.match(/\d+/)?.[0];
+  const COOLDOWN = (() => {
+    const cooldown = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/)?.[0];
+    const ready = ability?.querySelector(".start-recast")?.textContent.match(/\d+/)?.[0];
+    return ready? nonEmpty`{{ReadyIn|${ready}|${cooldown}}}`: nonEmpty`{{InfoCd|num=0|cooldown=${cooldown}${enhance_level && "|cooldown1=|level1=" + enhance_level}}}`;
+  })();
+  const OBTAIN = (() => {
+    const obtain = ability?.querySelector(".prt-condition")?.textContent.match(/\d+/)?.[0] ?? (ability && "1");
+    return nonEmpty`{{InfoOb|obtained=${obtain}${enhance_level && "|enhanced=" + enhance_level}}}`;
+  })();
 
   return [NAME, DESC, ID, COLOR, COOLDOWN, OBTAIN];
 };
 
 const ability_flexboxes = document.querySelectorAll(".prt-detail-action .prt-box-flexible");
 const ABILITY_COUNT = ability_flexboxes.length;
-const [ABILITY1_NAME, ABILITY1_DESC, ABILITY1_ID, ABILITY1_COLOR, ABILITY1_COOLDOWN] = ability_info(ability_flexboxes[0]);
-const [ABILITY2_NAME, ABILITY2_DESC, ABILITY2_ID, ABILITY2_COLOR, ABILITY2_COOLDOWN] = ability_info(ability_flexboxes[1]);
+const [ABILITY1_NAME, ABILITY1_DESC, ABILITY1_ID, ABILITY1_COLOR, ABILITY1_COOLDOWN, ABILITY1_OBTAIN] = ability_info(ability_flexboxes[0], (RARITY == "SSR" && "55") || "45");
+const [ABILITY2_NAME, ABILITY2_DESC, ABILITY2_ID, ABILITY2_COLOR, ABILITY2_COOLDOWN, ABILITY2_OBTAIN] = ability_info(ability_flexboxes[1], (RARITY == "SSR" && "75") || (RARITY == "SR" && "65"));
 const [ABILITY3_NAME, ABILITY3_DESC, ABILITY3_ID, ABILITY3_COLOR, ABILITY3_COOLDOWN, ABILITY3_OBTAIN] = ability_info(ability_flexboxes[2]);
 const [ABILITY4_NAME, ABILITY4_DESC, ABILITY4_ID, ABILITY4_COLOR, ABILITY4_COOLDOWN, ABILITY4_OBTAIN] = ability_info(ability_flexboxes[3]);
 
@@ -181,30 +188,30 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |a1_icon=${ABILITY1_ID}
 |a1_color=${ABILITY1_COLOR}
 |a1_name=${ABILITY1_NAME}
-|a1_cd={{InfoCd|num=0|cooldown=${ABILITY1_COOLDOWN}|cooldown1=|level1=55}}
+|a1_cd=${ABILITY1_COOLDOWN}
 |a1_dur={{InfoDur|type=t|duration=}}
-|a1_oblevel={{InfoOb|obtained=1|enhanced=55}}
+|a1_oblevel=${ABILITY1_OBTAIN}
 |a1_effdesc={{InfoDes|num=0|des=${ABILITY1_DESC}}}
 |a2_icon=${ABILITY2_ID}
 |a2_color=${ABILITY2_COLOR}
 |a2_name=${ABILITY2_NAME}
-|a2_cd={{InfoCd|num=0|cooldown=${ABILITY2_COOLDOWN}|cooldown1=|level1=75}}
+|a2_cd=${ABILITY2_COOLDOWN}
 |a2_dur={{InfoDur|type=t|duration=}}
-|a2_oblevel={{InfoOb|obtained=1|enhanced=75}}
+|a2_oblevel=${ABILITY2_OBTAIN}
 |a2_effdesc={{InfoDes|num=0|des=${ABILITY2_DESC}}}
 |a3_icon=${ABILITY3_ID}
 |a3_color=${ABILITY3_COLOR}
 |a3_name=${ABILITY3_NAME}
-|a3_cd={{InfoCd|num=0|cooldown=${ABILITY3_COOLDOWN}}}
+|a3_cd=${ABILITY3_COOLDOWN}
 |a3_dur={{InfoDur|type=t|duration=}}
-|a3_oblevel={{InfoOb|obtained=${ABILITY3_OBTAIN}}}
+|a3_oblevel=${ABILITY3_OBTAIN}
 |a3_effdesc={{InfoDes|num=0|des=${ABILITY3_DESC}}}
 |a4_icon=${ABILITY4_ID}
 |a4_color=${ABILITY4_COLOR}
 |a4_name=${ABILITY4_NAME}
-|a4_cd={{InfoCd|num=0|cooldown=${ABILITY4_COOLDOWN}}}
+|a4_cd=${ABILITY4_COOLDOWN}
 |a4_dur={{InfoDur|type=t|duration=}}
-|a4_oblevel={{InfoOb|obtained=${ABILITY4_OBTAIN}}}
+|a4_oblevel=${ABILITY4_OBTAIN}
 |a4_effdesc={{InfoDes|num=0|des=${ABILITY4_DESC}}}
 |s_abilitycount=${SUPPORT_ABILITY_COUNT}
 |sa_name=${SUPPORT_ABILITY1_NAME}
