@@ -83,7 +83,6 @@ const result = nonEmpty`{{Weapon
 |link_jpwiki=
 |link_gamewith=
 |link_kamigame=
-|min_rank=
 |evo_min=0
 |evo_base=3
 |evo_max=3

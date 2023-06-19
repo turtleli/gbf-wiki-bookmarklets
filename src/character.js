@@ -144,7 +144,6 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |max_evo=4
 |uncap_type=${RARITY}
 |expedition_type=
-|blush_value=
 |art1={{PAGENAME}} A.png
 |art2={{PAGENAME}} B.png
 |art3=
