@@ -65,16 +65,21 @@ const JOIN_WEAPON = document.querySelector(".txt-weapon-name").textContent;
 
 const PROFICIENCY = (() => {
   const list = [];
-  if (document.querySelector(".ico-weapon-1")) list.push("Sabre");
-  if (document.querySelector(".ico-weapon-2")) list.push("Dagger");
-  if (document.querySelector(".ico-weapon-3")) list.push("Spear");
-  if (document.querySelector(".ico-weapon-4")) list.push("Axe");
-  if (document.querySelector(".ico-weapon-5")) list.push("Staff");
-  if (document.querySelector(".ico-weapon-6")) list.push("Gun");
-  if (document.querySelector(".ico-weapon-7")) list.push("Melee");
-  if (document.querySelector(".ico-weapon-8")) list.push("Bow");
-  if (document.querySelector(".ico-weapon-9")) list.push("Harp");
-  if (document.querySelector(".ico-weapon-10")) list.push("Katana");
+  const proficiency_list = document.querySelectorAll(".prt-specialty > div");
+  for (const element of proficiency_list) {
+    switch (element.className) {
+      case "ico-weapon-1": list.push("Sabre"); break;
+      case "ico-weapon-2": list.push("Dagger"); break;
+      case "ico-weapon-3": list.push("Spear"); break;
+      case "ico-weapon-4": list.push("Axe"); break;
+      case "ico-weapon-5": list.push("Staff"); break;
+      case "ico-weapon-6": list.push("Gun"); break;
+      case "ico-weapon-7": list.push("Melee"); break;
+      case "ico-weapon-8": list.push("Bow"); break;
+      case "ico-weapon-9": list.push("Harp"); break;
+      case "ico-weapon-10": list.push("Katana"); break;
+    }
+  }
   return list.join(",");
 })();
 
