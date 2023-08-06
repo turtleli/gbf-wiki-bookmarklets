@@ -3,26 +3,29 @@ name: Github Pages
 on:
   push:
     branches:
-      - master
+      - working
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: 12.x
+        node-version: 18
     - run: npm ci
     - name: Build
-      run: npm run build --if-present
-      env:
-        CI: true
-    - name: Deploy
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v1
+      run: npm run build
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
       with:
-        target_branch: gh-pages
-        build_dir: public
-      env:
-        GITHUB_PAT: ${{ secrets.PAT }}
+        path: 'public'
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      uses: actions/deploy-pages@v2
