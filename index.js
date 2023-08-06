@@ -30,7 +30,7 @@ const [html_start, html_end] = html_template.split(anchor);
   for (const key in src) {
     const script = `(() => {${lib_scripts}${src[key]}})();`;
     const bookmarklet = (await minify(script, options)).code.replace(/%|"|<|>|\n/g, encodeURIComponent);
-    result += anchor.replace("#placeholder", `javascript: ${bookmarklet}`).replace("><", `>${key} Template<`);
+    result += anchor.replace("#placeholder", `javascript: ${bookmarklet}`).replace("><", `>${key}<`);
   }
   const date = `<!-- Generated at ${Date()} -->`;
 
