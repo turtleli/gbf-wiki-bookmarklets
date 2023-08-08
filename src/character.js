@@ -61,7 +61,7 @@ const SERIES = (() => {
 
 const VOICE_ACTOR = document.querySelector(".txt-acter-name").innerText.split("\n").join(", ");
 
-const JOIN_WEAPON = document.querySelector(".txt-weapon-name").textContent;
+const JOIN_WEAPON = document.querySelector(".txt-weapon-name")?.textContent;
 
 const PROFICIENCY = (() => {
   const list = [];
