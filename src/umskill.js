@@ -16,7 +16,7 @@ const ability_info = ability => {
   const COOLDOWN = (() => {
     const cooldown = ability?.querySelector(".txt-recast")?.textContent.match(/\d+/)?.[0];
     const ready = ability?.querySelector(".start-recast")?.textContent.match(/\d+/)?.[0];
-    return ready? nonEmpty`{{ReadyIn|${ready}|${cooldown}}}`: (cooldown? cooldown + 'T': '-');
+    return ready? `{{ReadyIn|${ready}${cooldown? '|' + cooldown: ''}}}`: (cooldown? cooldown + 'T': '-');
   })();
 
   return [NAME, DESC, ID, COLOR, COOLDOWN];
