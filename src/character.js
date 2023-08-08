@@ -5,7 +5,7 @@ if (!location.hash.match("#gacha/chara")) {
 }
 
 const ID = document.querySelector('.btn-char-zoom[data-image-id]').getAttribute("data-image-id").replace("_01", "");
-const NAME = document.querySelector(".prt-chara-info > div:first-child").textContent;
+const NAME = document.querySelector(".prt-scroll-title").textContent;
 
 const RARITY = (() => {
   if (document.querySelector(".prt-rarity-4")) return "SSR";
@@ -61,7 +61,7 @@ const SERIES = (() => {
 
 const VOICE_ACTOR = document.querySelector(".txt-acter-name").innerText.split("\n").join(", ");
 
-const JOIN_WEAPON = document.querySelector(".txt-weapon-name").textContent;
+const JOIN_WEAPON = document.querySelector(".txt-weapon-name")?.textContent;
 
 const PROFICIENCY = (() => {
   const list = [];
@@ -132,6 +132,8 @@ const [ABILITY1_NAME, ABILITY1_DESC, ABILITY1_ID, ABILITY1_COLOR, ABILITY1_COOLD
 const [ABILITY2_NAME, ABILITY2_DESC, ABILITY2_ID, ABILITY2_COLOR, ABILITY2_COOLDOWN, ABILITY2_OBTAIN] = ability_info(ability_flexboxes[1], (RARITY == "SSR" && "75") || (RARITY == "SR" && "65"));
 const [ABILITY3_NAME, ABILITY3_DESC, ABILITY3_ID, ABILITY3_COLOR, ABILITY3_COOLDOWN, ABILITY3_OBTAIN] = ability_info(ability_flexboxes[2]);
 const [ABILITY4_NAME, ABILITY4_DESC, ABILITY4_ID, ABILITY4_COLOR, ABILITY4_COOLDOWN, ABILITY4_OBTAIN] = ability_info(ability_flexboxes[3]);
+
+const PROFILE = document.querySelector(".prt-flavor")?.textContent;
 
 const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 {{Character
@@ -239,7 +241,7 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |a3_mimic_notes=
 |a4_mimic=
 |a4_mimic_notes=
-|profile=
+|profile=${PROFILE}
 }}
 
 ==Gameplay Notes==
