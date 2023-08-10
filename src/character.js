@@ -133,7 +133,10 @@ const [ABILITY2_NAME, ABILITY2_DESC, ABILITY2_ID, ABILITY2_COLOR, ABILITY2_COOLD
 const [ABILITY3_NAME, ABILITY3_DESC, ABILITY3_ID, ABILITY3_COLOR, ABILITY3_COOLDOWN, ABILITY3_OBTAIN] = ability_info(ability_flexboxes[2]);
 const [ABILITY4_NAME, ABILITY4_DESC, ABILITY4_ID, ABILITY4_COLOR, ABILITY4_COOLDOWN, ABILITY4_OBTAIN] = ability_info(ability_flexboxes[3]);
 
-const PROFILE = document.querySelector(".prt-flavor")?.textContent;
+const PROFILE = Game.view?.chara?.master?.comment_en ?? document.querySelector(".prt-flavor")?.textContent;
+
+const BASE_DA = Game.view?.chara?.master?.da_odds;
+const BASE_TA = Game.view?.chara?.master?.ta_odds;
 
 const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 {{Character
@@ -157,6 +160,8 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |base_evo=4
 |max_evo=4
 |uncap_type=${RARITY}
+|base_da=${BASE_DA}
+|base_ta=${BASE_TA}
 |expedition_type=
 |art1={{PAGENAME}} A.png
 |art2={{PAGENAME}} B.png
