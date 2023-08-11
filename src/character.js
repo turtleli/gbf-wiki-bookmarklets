@@ -133,25 +133,41 @@ const [ABILITY2_NAME, ABILITY2_DESC, ABILITY2_ID, ABILITY2_COLOR, ABILITY2_COOLD
 const [ABILITY3_NAME, ABILITY3_DESC, ABILITY3_ID, ABILITY3_COLOR, ABILITY3_COOLDOWN, ABILITY3_OBTAIN] = ability_info(ability_flexboxes[2]);
 const [ABILITY4_NAME, ABILITY4_DESC, ABILITY4_ID, ABILITY4_COLOR, ABILITY4_COOLDOWN, ABILITY4_OBTAIN] = ability_info(ability_flexboxes[3]);
 
-const PROFILE = Game.view?.chara?.master?.comment_en ?? document.querySelector(".prt-flavor")?.textContent;
+const master = Game.view?.chara?.master;
+const PROFILE = master?.comment_en ?? document.querySelector(".prt-flavor")?.textContent;
+const CHARID = master?.character_id;
+const GENDER = (() => {
+  switch (master?.sex) {
+    case '0': return 'm';
+    case '1': return 'f';
+    case '2': return 'o';
+    case '3': return 'mf';
+    case '4': return 'mo';
+    case '5': return 'fo';
+    default: return '';
+  }
+})();
+const RELEASE_DATE= master?.start_date?.match(/^\d{4}\/\d{2}\/\d{2}/)?.[0].replaceAll('/', '-')
 
-const BASE_DA = Game.view?.chara?.master?.da_odds;
-const BASE_TA = Game.view?.chara?.master?.ta_odds;
+const MIN_HP = master?.default_hp;
+const MIN_ATK = master?.default_attack;
+const BASE_DA = master?.da_odds;
+const BASE_TA = master?.ta_odds;
 
 const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 {{Character
 |id=${ID}
-|charid=
+|charid=${CHARID}
 |series=${SERIES}
 |jpname=
 |jptitle=
 |jpva=
 |name=${NAME}
-|release_date=
+|release_date=${RELEASE_DATE}
 |link_gamewith=
 |link_jpwiki=
 |link_kamigame=
-|gender=
+|gender=${GENDER}
 |obtain=
 |title=
 |title_source=
@@ -178,11 +194,11 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |join=
 |join_weapon=${JOIN_WEAPON}
 |weapon=${PROFICIENCY}
-|min_atk=
+|min_atk=${MIN_ATK}
 |max_atk=${MAX_ATK}
 |flb_atk=
 |bonus_atk=
-|min_hp=
+|min_hp=${MIN_HP}
 |max_hp=${MAX_HP}
 |flb_hp=
 |bonus_hp=
