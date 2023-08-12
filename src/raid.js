@@ -64,7 +64,7 @@ const generateBattleEnemyTemplate = boss => {
 }
 
 let result = "";
-const boss_list = stage.pJsnData?.boss.param;
+const boss_list = stage.gGameStatus?.boss.param;
 for (const boss of boss_list) {
   result += generateBattleEnemyTemplate(boss);
 }
