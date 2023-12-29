@@ -39,7 +39,7 @@ const MAX_HP = document.querySelector(".prt-max-hp .txt-hp-value").textContent;
 const MIN_ATK = document.querySelector(".prt-min-atk .txt-atk-value").textContent;
 const MAX_ATK = document.querySelector(".prt-max-atk .txt-atk-value").textContent;
 
-const call_info = document.querySelector("#prt-detail-summon-special-skill");
+const call_info = document.querySelector(".prt-detail-summon");
 const CALL_NAME = call_info?.querySelector(".name")?.textContent;
 const CALL_DESC = call_info?.querySelector(".comment")?.textContent;
 const CALL_COOLDOWN = call_info?.querySelector(".txt-recast")?.textContent.match(/\d+/)?.[0];
