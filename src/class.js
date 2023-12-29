@@ -88,6 +88,7 @@ const convert_bonus = kind => {
     case 'bonus_3': return 'Debuff Resistance';
     case 'bonus_4': return 'Debuff Success';
     case 'bonus_5': return 'Inhibit overdrive';
+    case 'bonus_6': return 'Bounty success rate';
     case 'bonus_13': return 'Heal';
     case 'bonus_14': return 'HP';
     case 'bonus_15': return 'Charge Bar';
@@ -137,7 +138,7 @@ const ability_info = ability => {
   return [NAME, DESC, ID, COLOR, COOLDOWN];
 };
 
-const [ABILITY1_NAME, ABILITY1_DESC, ABILITY1_ID, ABILITY1_COLOR, ABILITY1_COOLDOWN] = ability_info(job.action_ability['1'])
+const [ABILITY1_NAME, ABILITY1_DESC, ABILITY1_ID, ABILITY1_COLOR, ABILITY1_COOLDOWN] = ability_info(job.ability['1'])
 
 const result =`{{Class
 |id=${ID}
