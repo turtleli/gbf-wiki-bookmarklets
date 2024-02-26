@@ -1,5 +1,5 @@
 const url = document.URL;
-const match = url.match(/scene_s(\d)_([a-z]*)/);
+const match = url.match(/scene_s(\d+)_([a-z]+)/);
 if (match == null) return;
 const scene_number = match?.[1];
 const scene_type = (() => {
