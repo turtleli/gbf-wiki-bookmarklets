@@ -87,6 +87,8 @@ for (let n = 0; n < scene_list.length; ++n) {
 
     if (scene.branch == 2)
         in_multi_line_branch = true;
+    if (scene.branch == 3)
+        current_character = '';
     if (scene.branch == 4)
         in_multi_line_branch = false;
 
