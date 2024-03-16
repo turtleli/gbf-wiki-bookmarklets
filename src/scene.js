@@ -87,8 +87,6 @@ for (let n = 0; n < scene_list.length; ++n) {
 
     if (scene.branch == 2)
         in_multi_line_branch = true;
-    if (scene.branch == 3)
-        current_character = '';
     if (scene.branch == 4)
         in_multi_line_branch = false;
 
@@ -128,6 +126,7 @@ for (let n = 0; n < scene_list.length; ++n) {
         result += bold_tag + "Choose: " + italic_tag + scene.sel1_txt + italic_tag + bold_tag + "<br />";
         if (!in_multi_line_branch)
             result += "\n";
+        current_character = '';
     }
 }
 
