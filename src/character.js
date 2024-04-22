@@ -80,6 +80,7 @@ const SERIES = (() => {
   if (document.querySelector(".ico-series-type9")) list.push("tie-in");
   if (document.querySelector(".ico-series-type10")) list.push("eternals");
   if (document.querySelector(".ico-series-type11")) list.push("evokers");
+  if (document.querySelector(".ico-series-type12")) list.push("4saints");
   return list.join(";");
 })();
 
@@ -202,7 +203,7 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |uncap_type=${RARITY}
 |base_da=${BASE_DA}
 |base_ta=${BASE_TA}
-|expedition_type=
+|expedition_type=???
 |art1={{PAGENAME}} A.png
 |art2={{PAGENAME}} B.png
 |art3=
