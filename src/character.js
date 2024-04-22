@@ -34,13 +34,37 @@ const TYPE = (() => {
 })();
 
 const RACE = (() => {
-  if (document.querySelector(".ico-mini-race-txt1")) return "Human";
-  if (document.querySelector(".ico-mini-race-txt2")) return "Erune";
-  if (document.querySelector(".ico-mini-race-txt3")) return "Draph";
-  if (document.querySelector(".ico-mini-race-txt4")) return "Harvin";
-  if (document.querySelector(".ico-mini-race-txt5")) return "Other";
-  if (document.querySelector(".ico-mini-race-txt6")) return "Primal";
-  return "?";
+  const list = [];
+  const race_list = document.querySelectorAll(".prt-npc-race > div");
+  for (const element of race_list) {
+    switch (element.className) {
+      case "ico-mini-race-txt1":
+      case "ico-mini-race1":
+        list.push("Human");
+        break;
+      case "ico-mini-race-txt2":
+      case "ico-mini-race2":
+        list.push("Erune");
+        break;
+      case "ico-mini-race-txt3":
+      case "ico-mini-race3":
+        list.push("Draph");
+        break;
+      case "ico-mini-race-txt4":
+      case "ico-mini-race4":
+        list.push("Harvin");
+        break;
+      case "ico-mini-race-txt5":
+      case "ico-mini-race5":
+        list.push("Other");
+        break;
+      case "ico-mini-race-txt6":
+      case "ico-mini-race6":
+        list.push("Primal");
+        break;
+    }
+  }
+  return list.join(",");
 })();
 
 const SERIES = (() => {
