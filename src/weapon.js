@@ -68,6 +68,36 @@ const [SKILL3_NAME, SKILL3_ICON, SKILL3_DESC, SKILL3_LEVELREQ] = skill_info(skil
 
 const FLAVOR = document.querySelector(".prt-flavor").textContent.trim();
 
+const WEAPON_OPTION = (() => {
+  switch (TYPE) {
+    case "sabre":
+    case "katana":
+      return `
+|sm_s1_desc=
+|sm_s1_dur=
+|sm_s2_desc=
+|sm_s2_cd=
+|sm_s2_dur=
+|sm_s2_cost=
+|sm_atk_desc=
+|sm_atk_dur=
+|sm_def_desc=
+|sm_def_dur=
+|sm_def_cost=`;
+    case "gun":
+      return `
+|bullets=
+|bullet1=
+|bullet2=
+|bullet3=
+|bullet4=
+|bullet5=
+|bullet6=`;
+    default:
+      return '';
+  }
+})();
+
 const result = nonEmpty`{{Weapon
 |id=${ID}
 |series=
@@ -130,7 +160,7 @@ const result = nonEmpty`{{Weapon
 |s3_4s_icon=
 |s3_4s_lvl=
 |ens3_4s_desc=
-|s3_4s_desc=
+|s3_4s_desc=${WEAPON_OPTION}
 |reduce_advice=
 |reduce=
 |flavor=${FLAVOR}
