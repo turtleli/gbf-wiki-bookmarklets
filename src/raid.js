@@ -44,7 +44,7 @@ const generateBattleEnemyTemplate = boss => {
   const hp_trigger_action_list = stage.pJsnData.hp_trigger_action_list[num];
 
   let result = "";
-  for (const SPECIAL_ACTION_ID in hp_trigger_action_list) {
+  for (const SPECIAL_ACTION_ID of Object.keys(hp_trigger_action_list)) {
     const trigger = hp_trigger_action_list[SPECIAL_ACTION_ID];
     result += generateEnemyActionTemplate(trigger);
   }
@@ -63,10 +63,10 @@ const generateBattleEnemyTemplate = boss => {
 }}`;
 }
 
-let result = "";
+let result = [];
 const boss_list = stage.gGameStatus?.boss.param;
 for (const boss of boss_list) {
-  result += generateBattleEnemyTemplate(boss);
+  result.push(generateBattleEnemyTemplate(boss));
 }
 
-copyToClipboard(result);
+copyToClipboard(result.join(" | "));
