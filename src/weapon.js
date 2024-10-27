@@ -51,7 +51,7 @@ const MAX_HP = document.querySelector(".prt-max-hp .txt-hp-value").textContent;
 const MIN_ATK = document.querySelector(".prt-min-atk .txt-atk-value").textContent;
 const MAX_ATK = document.querySelector(".prt-max-atk .txt-atk-value").textContent;
 
-const OUGI_NAME = document.querySelector(".prt-detail-special .name-m").textContent;
+const OUGI_NAME = document.querySelector(".prt-detail-special .name-m").textContent?.replace(/ \+*$/,'');
 const OUGI_DESC = document.querySelector(".prt-detail-special .comment-m").textContent;
 
 const skill_flexboxes = document.querySelectorAll(".prt-detail-skill .prt-box-flexible");
