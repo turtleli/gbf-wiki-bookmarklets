@@ -29,6 +29,14 @@ const generateEnemyActionTemplate = trigger => {
 `;
 };
 
+const generateBattleEnemyNotes = trigger => {
+  const NAME = trigger.name;
+  const REMAIN_HP_FROM = trigger.remain_hp_from;
+  return `
+* '''${REMAIN_HP_FROM}% Trigger'''
+: Casts ${NAME}.`;
+};
+
 const generateBattleEnemyTemplate = boss => {
   const ID = boss.enemy_id;
   const [NAME, LVL] = (() => {
@@ -43,10 +51,12 @@ const generateBattleEnemyTemplate = boss => {
 
   const hp_trigger_action_list = stage.pJsnData.hp_trigger_action_list[num];
 
-  let result = "";
+  let ca_desc = "";
+  let notes = "";
   for (const SPECIAL_ACTION_ID of Object.keys(hp_trigger_action_list)) {
     const trigger = hp_trigger_action_list[SPECIAL_ACTION_ID];
-    result += generateEnemyActionTemplate(trigger);
+    ca_desc += generateEnemyActionTemplate(trigger);
+    notes += generateBattleEnemyNotes(trigger);
   }
 
   return `{{
@@ -58,8 +68,8 @@ const generateBattleEnemyTemplate = boss => {
     |hp=${HP}
     |ct=${CT}
     |od=${OD}
-    |ca_desc=${result}
-    |notes=
+    |ca_desc=${ca_desc}
+    |notes=${notes}
 }}`;
 }
 
