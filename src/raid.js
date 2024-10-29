@@ -49,14 +49,17 @@ const generateBattleEnemyTemplate = boss => {
   const OD = boss.modeflag == 1? "yes": "no";
   const num = boss.number;
 
-  const hp_trigger_action_list = stage.pJsnData.hp_trigger_action_list[num];
-
   let ca_desc = "";
   let notes = "";
-  for (const SPECIAL_ACTION_ID of Object.keys(hp_trigger_action_list)) {
-    const trigger = hp_trigger_action_list[SPECIAL_ACTION_ID];
-    ca_desc += generateEnemyActionTemplate(trigger);
-    notes += generateBattleEnemyNotes(trigger);
+  // hp_trigger_action_list is an empty array in V2 raids
+  if (stage.pJsnData.hp_trigger_action_list.length != 0) {
+    const hp_trigger_action_list = stage.pJsnData.hp_trigger_action_list[num];
+
+    for (const SPECIAL_ACTION_ID of Object.keys(hp_trigger_action_list)) {
+      const trigger = hp_trigger_action_list[SPECIAL_ACTION_ID];
+      ca_desc += generateEnemyActionTemplate(trigger);
+      notes += generateBattleEnemyNotes(trigger);
+    }
   }
 
   return `{{
