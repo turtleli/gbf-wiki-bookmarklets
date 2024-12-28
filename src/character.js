@@ -124,6 +124,7 @@ const support_ability_flexboxes = document.querySelectorAll(".prt-detail-support
 const SUPPORT_ABILITY_COUNT = support_ability_flexboxes.length;
 const [SUPPORT_ABILITY1_NAME, SUPPORT_ABILITY1_DESC] = name_comment_m_info(support_ability_flexboxes[0])
 const [SUPPORT_ABILITY2_NAME, SUPPORT_ABILITY2_DESC] = name_comment_m_info(support_ability_flexboxes[1])
+const [SUPPORT_ABILITY3_NAME, SUPPORT_ABILITY3_DESC] = name_comment_m_info(support_ability_flexboxes[2])
 
 const ability_info = (ability, enhance_level) => {
   const NAME = ability?.querySelector(".name-m")?.textContent;
@@ -273,6 +274,9 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |sa2_name=${SUPPORT_ABILITY2_NAME}
 |sa2_level={{InfoOb|obtained=1}}
 |sa2_desc=${SUPPORT_ABILITY2_DESC}
+|sa3_name=${SUPPORT_ABILITY3_NAME}
+|sa3_level={{InfoOb|obtained=1}}
+|sa3_desc=${SUPPORT_ABILITY3_DESC}
 |sa_emp_desc=
 |perk11=
 |perk12=
