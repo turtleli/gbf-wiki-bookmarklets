@@ -81,7 +81,7 @@ const SERIES = (() => {
   if (document.querySelector(".ico-series-type10")) list.push("eternals");
   if (document.querySelector(".ico-series-type11")) list.push("evokers");
   if (document.querySelector(".ico-series-type12")) list.push("4saints");
-  return list.join(";");
+  return list.join(",");
 })();
 
 const VOICE_ACTOR = document.querySelector(".txt-acter-name").innerText.split("\n").join(", ");
