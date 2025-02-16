@@ -21,14 +21,8 @@ for (const step of scenario_steps) {
     scene_list.push({
         character: attr.charcter1_name,
         detail: attr.detail,
-        sel1_txt: attr.sel1_txt,
-        sel2_txt: attr.sel2_txt,
-        sel3_txt: attr.sel3_txt ?? '' ,
-        sel4_txt: attr.sel4_txt ?? '' ,
-        sel1_next: attr.sel_next1,
-        sel2_next: attr.sel_next2,
-        sel3_next: attr.sel_next3 ?? '' ,
-        sel4_next: attr.sel_next4 ?? '' ,
+        sel_txt: [attr.sel1_txt, attr.sel2_txt, attr.sel3_txt ?? '', attr.sel4_txt ?? '' ],
+        sel_next: [attr.sel_next1, attr.sel_next2, attr.sel_next3 ?? '', attr.sel_next4 ?? '' ],
         next: attr.next,
         branch: 0,
     });
@@ -48,25 +42,32 @@ const multiple_characters = (() => {
 })();
 
 for (const scene of scene_list) {
-    if (scene.sel1_txt == '' || scene.sel2_txt == '')
+    if (scene.sel_txt[0] == '' || scene.sel_txt[1] == '')
         continue;
     // Buggy scene (Catura birthday 2)
-    if (scene.sel1_next == '') {
+    if (scene.sel_next[0] == '') {
         continue;
     }
     // Non branching scene (Novei, taking massive shortcuts)
-    if (scene.sel1_next == scene.sel2_next) {
+    if (scene.sel_next[0] == scene.sel_next[1]) {
         scene.branch = 1;
         continue;
     }
 
     scene.branch = 2;
-    const sel1_end = Number(scene.sel2_next) - 1;
-    scene_list[sel1_end].sel1_txt = scene.sel2_txt;
-    scene_list[sel1_end].sel1_next = "monii";
-    scene_list[sel1_end].branch = 3; // first branch end
-    const sel2_end = Number(scene_list[sel1_end].next) - 1;
-    scene_list[sel2_end].branch = 4; // second branch end
+
+    let n = 0;
+    let end = ''
+    do {
+        end = Number(scene.sel_next[n + 1]) - 1;
+        scene_list[end].sel_txt[0] = scene.sel_txt[n + 1];
+        scene_list[end].sel_next[0] = "monii";
+        scene_list[end].branch = 3; // non last branch end
+        ++n;
+    } while (n < 3 && scene.sel_next[n + 1] != '')
+
+    end = Number(scene_list[end].next) - 1;
+    scene_list[end].branch = 4; // Last branch end
 }
 
 const bold_tag = "'''";
@@ -108,22 +109,22 @@ for (let n = 0; n < scene_list.length; ++n) {
     }
 
     if (scene.branch == 1) {
-        if (scene.sel1_txt != '')
-            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel1_txt + italic_tag + bold_tag + "<br />\n";
-        if (scene.sel2_txt != '')
-            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel2_txt + italic_tag + bold_tag + "<br />\n";
-        if (scene.sel3_txt != '')
-            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel3_txt + italic_tag + bold_tag + "<br />\n";
-        if (scene.sel4_txt != '')
-            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel4_txt + italic_tag + bold_tag + "<br />\n";
+        if (scene.sel_txt[0] != '')
+            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel_txt[0] + italic_tag + bold_tag + "<br />\n";
+        if (scene.sel_txt[1] != '')
+            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel_txt[1] + italic_tag + bold_tag + "<br />\n";
+        if (scene.sel_txt[2] != '')
+            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel_txt[2] + italic_tag + bold_tag + "<br />\n";
+        if (scene.sel_txt[3] != '')
+            result += "*" + bold_tag + "Choose: " + italic_tag + scene.sel_txt[3] + italic_tag + bold_tag + "<br />\n";
         continue;
     }
 
     // Check next to see if choice will actually pop up
-    if (scene.sel1_txt != '' && scene.sel1_next != '') {
+    if (scene.sel_txt[0] != '' && scene.sel_next[0] != '') {
         if (in_multi_line_branch)
             result += "\n*";
-        result += bold_tag + "Choose: " + italic_tag + scene.sel1_txt + italic_tag + bold_tag + "<br />";
+        result += bold_tag + "Choose: " + italic_tag + scene.sel_txt[0] + italic_tag + bold_tag + "<br />";
         if (!in_multi_line_branch)
             result += "\n";
         current_character = '';
