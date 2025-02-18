@@ -62,8 +62,7 @@ const generateBattleEnemyTemplate = boss => {
     }
   }
 
-  return `{{
-    BattleEnemy
+  return `{{BattleEnemy
     |id=${ID}
     |name=${NAME}
     |lvl=${LVL}
@@ -73,7 +72,7 @@ const generateBattleEnemyTemplate = boss => {
     |od=${OD}
     |ca_desc=${ca_desc}
     |notes=${notes}
-}}`;
+    }}`;
 }
 
 let result = [];
