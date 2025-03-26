@@ -69,13 +69,13 @@ const RACE = (() => {
 
 const SERIES = (() => {
   const list = [];
+  if (document.querySelector(".ico-series-type7")) list.push("grand");
+  if (document.querySelector(".ico-series-type6")) list.push("12generals");
   if (document.querySelector(".ico-series-type1")) list.push("summer");
   if (document.querySelector(".ico-series-type2")) list.push("yukata");
   if (document.querySelector(".ico-series-type3")) list.push("valentine");
   if (document.querySelector(".ico-series-type4")) list.push("halloween");
   if (document.querySelector(".ico-series-type5")) list.push("holiday");
-  if (document.querySelector(".ico-series-type6")) list.push("12generals");
-  if (document.querySelector(".ico-series-type7")) list.push("grand");
   if (document.querySelector(".ico-series-type8")) list.push("fantasy");
   if (document.querySelector(".ico-series-type9")) list.push("tie-in");
   if (document.querySelector(".ico-series-type10")) list.push("eternals");
