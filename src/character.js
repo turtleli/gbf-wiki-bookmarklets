@@ -69,18 +69,51 @@ const RACE = (() => {
 
 const SERIES = (() => {
   const list = [];
-  if (document.querySelector(".ico-series-type7")) list.push("grand");
-  if (document.querySelector(".ico-series-type6")) list.push("12generals");
-  if (document.querySelector(".ico-series-type1")) list.push("summer");
-  if (document.querySelector(".ico-series-type2")) list.push("yukata");
-  if (document.querySelector(".ico-series-type3")) list.push("valentine");
-  if (document.querySelector(".ico-series-type4")) list.push("halloween");
-  if (document.querySelector(".ico-series-type5")) list.push("holiday");
-  if (document.querySelector(".ico-series-type8")) list.push("fantasy");
-  if (document.querySelector(".ico-series-type9")) list.push("tie-in");
-  if (document.querySelector(".ico-series-type10")) list.push("eternals");
-  if (document.querySelector(".ico-series-type11")) list.push("evokers");
-  if (document.querySelector(".ico-series-type12")) list.push("4saints");
+  const series_list = document.querySelectorAll(".prt-npc-series > img");
+  for (const element of series_list) {
+    switch (element.getAttribute("src").match(/\/npc_series\/(.+?)\./)?.[1]) {
+      case "icon_series_1":
+        list.push("summer");
+        break;
+      case "icon_series_2":
+        list.push("yukata");
+        break;
+      case "icon_series_3":
+        list.push("valentine");
+        break;
+      case "icon_series_4":
+        list.push("halloween");
+        break;
+      case "icon_series_5":
+        list.push("holiday");
+        break;
+      case "icon_series_6":
+        list.push("12generals");
+        break;
+      case "icon_series_7":
+        list.push("grand");
+        break;
+      case "icon_series_8":
+        list.push("fantasy");
+        break;
+      case "icon_series_9":
+        list.push("tie-in");
+        break;
+      case "icon_series_10":
+        list.push("eternals");
+        break;
+      case "icon_series_11":
+        list.push("evokers");
+        break;
+      case "icon_series_12":
+        list.push("4saints");
+        break;
+      case "icon_series_13":
+        list.push("formal");
+        break;
+    }
+  }
+
   return list.join(",");
 })();
 
