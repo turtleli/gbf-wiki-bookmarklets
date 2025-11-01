@@ -1,3 +1,4 @@
+const nickname = "turtle";
 const url = document.URL;
 const match = url.match(/scene_s(\d+)_([a-z]+)/);
 if (match == null) return;
@@ -19,7 +20,7 @@ const scene_list = [];
 for (const step of scenario_steps) {
     const attr = step.attributes;
     scene_list.push({
-        character: attr.charcter1_name,
+        character: attr.charcter1_name.replaceAll(nickname, "(Captain)"),
         detail: attr.detail,
         sel_txt: [attr.sel1_txt, attr.sel2_txt, attr.sel3_txt ?? '', attr.sel4_txt ?? '' ],
         sel_next: [attr.sel_next1, attr.sel_next2, attr.sel_next3 ?? '', attr.sel_next4 ?? '' ],
@@ -93,7 +94,7 @@ for (let n = 0; n < scene_list.length; ++n) {
 
     if (scene.detail != '') {
         let detail = scene.detail
-            .replaceAll("turtle", "(Captain)")
+            .replaceAll(nickname, "(Captain)")
             .replaceAll("<span class='scene-font-italic'>", italic_tag)
             .replaceAll("</span>", italic_tag)
             .replaceAll("<br>", "<br />")
