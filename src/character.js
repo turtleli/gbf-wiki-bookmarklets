@@ -35,32 +35,48 @@ const TYPE = (() => {
 
 const RACE = (() => {
   const list = [];
-  const race_list = document.querySelectorAll(".prt-npc-race > div");
+  const race_list = document.querySelectorAll(".prt-npc-race > img");
   for (const element of race_list) {
-    switch (element.className) {
-      case "ico-mini-race-txt1":
-      case "ico-mini-race1":
+    switch (element.getAttribute("src").match(/\/race(?:_detail)?\/(.+?)\./)?.[1]) {
+      case "icon_race_detail_1":
+      case "icon_mini_race_1":
         list.push("Human");
         break;
-      case "ico-mini-race-txt2":
-      case "ico-mini-race2":
+      case "icon_race_detail_2":
+      case "icon_mini_race_2":
         list.push("Erune");
         break;
-      case "ico-mini-race-txt3":
-      case "ico-mini-race3":
+      case "icon_race_detail_3":
+      case "icon_mini_race_3":
         list.push("Draph");
         break;
-      case "ico-mini-race-txt4":
-      case "ico-mini-race4":
+      case "icon_race_detail_4":
+      case "icon_mini_race_4":
         list.push("Harvin");
         break;
-      case "ico-mini-race-txt5":
-      case "ico-mini-race5":
+      case "icon_race_detail_5":
+      case "icon_mini_race_5":
         list.push("Other");
         break;
-      case "ico-mini-race-txt6":
-      case "ico-mini-race6":
+      case "icon_race_detail_6":
+      case "icon_mini_race_6":
         list.push("Primal");
+        break;
+      case "icon_race_detail_7":
+      case "icon_mini_race_7":
+        list.push("Geonoid");
+        break;
+      case "icon_race_detail_8":
+      case "icon_mini_race_8":
+        list.push("Levleath");
+        break;
+      case "icon_race_detail_9":
+      case "icon_mini_race_9":
+        list.push("Grokkle");
+        break;
+      case "icon_race_detail_10":
+      case "icon_mini_race_10":
+        list.push("Wolvir");
         break;
     }
   }
