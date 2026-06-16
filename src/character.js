@@ -254,8 +254,8 @@ const result = nonEmpty`{{CharacterTabs|base={{BASENAME}}}}
 |base_da=${BASE_DA}
 |base_ta=${BASE_TA}
 |expedition_type=???
-|art1={{PAGENAME}} A.png
-|art2={{PAGENAME}} B.png
+|art1={{PAGENAME}} profileA.png
+|art2={{PAGENAME}} profileB.png
 |art3=
 |art_story1=
 |sprite1={{PAGENAME}} SDA.png
