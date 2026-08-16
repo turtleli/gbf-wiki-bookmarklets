@@ -27,7 +27,7 @@ const [html_start, html_end] = html_template.split(anchor);
 
   // Generate bookmarklet link for each item in ./src/
   let result = "";
-  for (const key in src) {
+  for (const key of Object.keys(src)) {
     const script = `(() => {${lib_scripts}${src[key]}})();`;
     const bookmarklet = (await minify(script, options)).code.replace(/%|"|<|>|\n/g, encodeURIComponent);
     result += anchor.replace("#placeholder", `javascript: ${bookmarklet}`).replace("><", `>${key}<`);
